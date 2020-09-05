@@ -1,6 +1,6 @@
 ---
 title: "Posts by life"
-layout: category
-permalink: /life/
+layout: posts
+permalink: /lifes/
 author_profile: true
 ---
