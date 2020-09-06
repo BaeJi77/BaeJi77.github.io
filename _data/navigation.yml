@@ -7,8 +7,22 @@ main:
   - title: "Categories"
     url: /categories/
   - title: "life"
-    url: /lifes/
+    url: /categories/lifes
   - title: "dev"
-    url: /devs/
+    url: /categories/dev
+  - title: "tags"
+    url: /tags/
   # - title: "Sitemap"
   #   url: /sitemap/
+
+dev-sidebar:
+  - title: "Java"
+    url: /categories/dev/java
+  - title: "Spring"
+    url: /categories/dev/spring
+
+life-sidebar:
+  - title: "Career"  
+    url: /categories/lifes/careers
+  - title: "Experience"
+    url: /categories/lifes/experiences
