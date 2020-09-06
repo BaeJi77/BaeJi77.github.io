@@ -5,6 +5,9 @@ categories:
   - dev
 tags:
   - first-commit
+
+type: life
+
 last_modified_at: 
 ---
 

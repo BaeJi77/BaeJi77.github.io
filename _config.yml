@@ -15,7 +15,7 @@ remote_theme           : "mmistakes/minimal-mistakes"
 minimal_mistakes_skin    : "mint" # "default" "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
-locale                   : "ko-KR"
+locale                   : "en-US"
 title                    : "배지77의 블로그"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
@@ -281,6 +281,19 @@ defaults:
       share: true
       related: true
       toc: true
+
+  - scope:
+      path: "_posts/dev"
+      type: dev
+    value:
+      sidebar:
+        nav: "dev-sidebar"
+  - scope:
+      path: "_post/life"
+      type: life
+    value:
+      sidebar:
+        nav: "life-sidebar"
   
   # _pages
   # - scope:
