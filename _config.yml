@@ -276,6 +276,7 @@ defaults:
     values:
       layout: single
       author_profile: false
+      show_date: true
       read_time: true
       comments: true
       share: true
@@ -284,14 +285,12 @@ defaults:
 
   - scope:
       path: "_posts/dev"
-      type: dev
-    value:
+    values:
       sidebar:
         nav: "dev-sidebar"
   - scope:
-      path: "_post/life"
-      type: life
-    value:
+      path: "_posts/life"
+    values:
       sidebar:
         nav: "life-sidebar"
   
