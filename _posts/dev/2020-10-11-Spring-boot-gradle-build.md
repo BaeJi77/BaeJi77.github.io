@@ -2,12 +2,14 @@
 title: "Spring boot docker image만들기 최적화 방법 (+ 새로운 gradle task)"
 
 categories:
-  - life
-  - career
+  - java
+  - spring
+  - dev
 tags:
-  - life
-  - career
-  - line+
+  - dev
+  - spring
+  - java
+  - gradle
 ---
 
 # Overview 
