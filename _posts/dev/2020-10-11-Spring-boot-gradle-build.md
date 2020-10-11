@@ -65,10 +65,11 @@ java -Djarmode=layertools -jar JAR_FILE_NAME.jar extract
 
 그래서 실제로 docker image를 만들어 가는 과정에서 이 순서에 역순으로 작성을 해주어야 한다. (자주 바뀌지 않기 때문에 캐쉬가 깨질 가능성이 적어진다.)
 
-![spring-boot-docker-image-1](../../assets/images/spring-boot-jar-layerable-folder.png)
+![spring-boot-docker-image-1](/assets/images/spring-boot-dockerized:jar-layerable-folder.png)
+
 위에 있는 사진은 실제로 압축을 풀었을 경우 나오는 폴더의 모습이다.
 
-```Dockerfile
+```docker
 FROM openjdk:8-jdk-alpine as builder
 WORKDIR application
 ARG JAR_FILE=build/libs/*.jar
@@ -103,24 +104,25 @@ Spring boot 2.3 에서 gradle (maven도 지원) [bootBuildImage](https://docs.sp
 Docker image를 만들어주는데 Dockerfile 없이 만드는 것이 가능하다.
 docker host 정보도 셋업 가능함 + build 관련해서 builder를 바꾼다던지 image 이름을 바꾸는 옵션이 존재함.
 
-![spring-boot-docker-image-2](../../assets/images/spring-boot-dockerized:docker-images.png)
+![spring-boot-docker-image-2-1](/assets/images/spring-boot-dockerized:gradle-task.png)
+![spring-boot-docker-image-2-2](/assets/images/spring-boot-dockerized:docker-images.png)
 
 gradle task 실행과 함께 docker image를 만들게 된다. 
 그리고 맨 마지막 줄에 있는 spring-boot-dockerized 이름을 가진 image가 만들어 진것을 확인할 수 있다. (gcr.io, paketobuilderpacks 이 친구들은 Buildpacks을 위해서 필요함)
 기본적으로 docker daemon을 사용하고 있기 때문에 docker가 설치되어 있어야지 동작할 수 있다.
 
-### [Buildpacks](https://buildpacks.io/)
+## [Buildpacks](https://buildpacks.io/)
 실제 bootBuildImage task는 buildpack 이라는 기술을 활용해서 구현했다.
 OCI 이미지와 최신 컨테이너 표준을 사용하며 어플리케이션을 컨테이너 이미지로 만드는데 잘 활용될 수 있는 기술이다.[Features](https://buildpacks.io/features/)
 
-![](../../assets/images/spring-boot-dockerized:comaprison.png)
+![spring-boot-docker-image-3](/assets/images/spring-boot-dockerized:comaprison.png)
 
 
-### Java Buildpack memory configuration
+## Java Buildpack memory configuration
 `buildpack` 으로 이미지를 만드는 경우에 있어서 기본적으로 자동으로 jvm 세팅을 해준다.
 자세한 jvm memory 계산 방법에 대해서 궁금하신 경우는 여기를 참고하세요. 
 
-#### Default
+### Default
 ```bash
 $ docker run -e spring.profiles.active=local -p 8080:8080 spring-boot-dockerized:0.0.1-SNAPSHOP
 
@@ -133,7 +135,7 @@ Picked up JAVA_TOOL_OPTIONS: -Djava.security.properties=/layers/paketo-buildpack
 ```
 기본적으로 어떤 옵션을 주지 않은 상태에서 실행을 했을 경우 Container size 1G라고 설정하고 나머지 jvm 옵션 + buildpack에서 만든 휴리스틱으로 알아서 셋업해줍니다.
 
-#### Container memory set-up
+### Container memory set-up
 ```bash
 $ docker run -e spring.profiles.active=local -p 8080:8080 -m=2G  spring-boot-dockerized:0.0.1-SNAPSHOP
 
@@ -146,21 +148,20 @@ Picked up JAVA_TOOL_OPTIONS: -Djava.security.properties=/layers/paketo-buildpack
 기본으로 셋업되어 있는 1G가 아닌 container의 메모리를 늘리게되면 그것만큼 알아서 나머지 jvm 셋팅을 해준다. 해당 계산법에 대해서는 위에 링크를 확인 바란다. 
 자동으로 셋업되는 것이 아닌 자기가 직접 jvm 셋업을 하고 싶은 경우 docker run을 하면서 JAVA_OPTS으로 셋업할 수 있다. 
 
-![](../../assets/images/spring-boot-dockerized:exetution-capture.png)
-![](../../assets/images/spring-boot-dockerized:exetution-capture-2g.png)
+![spring-boot-docker-image-4](/assets/images/spring-boot-dockerized:exetution-capture.png)
+![spring-boot-docker-image-5](/assets/images/spring-boot-dockerized:exetution-capture-2g.png)
 
 # Ref
-Packagin Layered Jars: https://docs.spring.io/spring-boot/docs/2.3.0.RELEASE/gradle-plugin/reference/html/#packaging-layered-jars
+[Packagin Layered Jars](https://docs.spring.io/spring-boot/docs/2.3.0.RELEASE/gradle-plugin/reference/html/#packaging-layered-jars)
 
-Spring boot docker image docs: https://spring.io/blog/2020/01/27/creating-docker-images-with-spring-boot-2-3-0-m1
+[Spring boot docker image docs](https://spring.io/blog/2020/01/27/creating-docker-images-with-spring-boot-2-3-0-m1)
 
-Spring boot Packaging OCI Images: https://docs.spring.io/spring-boot/docs/2.3.0.RELEASE/gradle-plugin/reference/html/#build-image
+[Spring boot Packaging OCI Images](https://docs.spring.io/spring-boot/docs/2.3.0.RELEASE/gradle-plugin/reference/html/#build-image)
 
-Buildpacks homepage: https://buildpacks.io/
+[Buildpacks homepage](https://buildpacks.io/)
 
-java buildpack memory calculator: https://github.com/cloudfoundry/java-buildpack-memory-calculator
+[java buildpack memory calculator](https://github.com/cloudfoundry/)
 
-java buildpack 4.0: https://www.cloudfoundry.org/blog/just-released-java-buildpack-4-0/
+[java buildpack 4.0](https://www.cloudfoundry.org/blog/just-released-java-buildpack-4-0/)
 
-
-https://zgundam.tistory.com/181?category=440149
+참고 블로그: https://zgundam.tistory.com/181?category=440149
