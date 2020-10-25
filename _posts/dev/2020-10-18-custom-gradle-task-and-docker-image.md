@@ -2,7 +2,6 @@
 title:  "Java Gradle custom task로 docker image 만들기 & 저장소에 올리기 (feat. harbor)"
 
 categories:
-  - java
   - spring
   - dev
 tags:
