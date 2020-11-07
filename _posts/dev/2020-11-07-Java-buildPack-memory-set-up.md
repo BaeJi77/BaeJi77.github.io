@@ -1,5 +1,5 @@
 ---
-title: "쿠버네티스에서 buildPacks으로 만들어진 이미지 메모리 설정하기"
+title: "Java/Spring 쿠버네티스에서 buildpack으로 만들어진 이미지 메모리 설정하기 (Set up java memory configration by using kubernetes resource)"
 
 categories:
   - spring
