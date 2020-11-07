@@ -16,7 +16,7 @@ tags:
 minikube를 하면서 로컬에 존재하는 docker image를 사용해보고 싶었는데 잘 되지 않더군요. 그래서 한번 방법을 찾아봤습니다.
 
 # 상황
-저는 로컬에 있는 것을 minikube에 올리기 위해서는 `.yaml` 파일을 만들던가 `kubectl`을 사용해서 실행했어요.
+저는 로컬에 있는 이미지를 `minikube` 위에서 동작하도록 설정하기 위해서 밑에와 같은 방식으로 `.yaml` 파일을 만들던가 `kubectl`을 만들어서 사용했습니다.
 ``` yaml
 apiVersion: v1
 kind: Pod
@@ -40,14 +40,18 @@ $ kubtctl run [쿠버네티스 위에서 이름] --image=[이미지이름]:[태�
 ![describe_pods](/assets/images/before_error.png)
 
 ``` bash
-Failed to pull image "[이미지이름]:[태그이름]": rpc error: code = Unknown desc = Error response from daemon: pull access denied for cms, repository does not exist or may require 'docker login': denied: requested access to the resource is denied 
+Failed to pull image "[이미지이름]:[태그이름]": rpc error: code = Unknown desc = Error response from daemon: 
+pull access denied for cms, repository does not exist or may require 'docker login': denied: requested access to the resource is denied 
 ```
 
 위에서 보이는 것 처럼 뭔가 `pull`을 하지 못하는 부분이 보였습니다. 
 
 여기저기 에러 메시지를 검색도 해보고 혹시 로컬에 존재하는 이미지를 가져오지 못하는 것이 아닐까 싶어서 검색을 해보니 방법이 있더군요. 
 
-현재 제가 로컬에서 동작하고 있는 docker image 모습입니다. (`docker ps`)
+현재 제가 로컬에서 동작하고 있는 docker image 모습입니다. 
+``` bash
+$ docker ps
+```
 
 ![before_docker_ps](/assets/images/before_docker_ps.png)
 
@@ -66,19 +70,22 @@ export MINIKUBE_ACTIVE_DOCKERD="minikube"
 
 # To point your shell to minikube's docker-daemon, run:
 # eval $(minikube -p minikube docker-env)
+
 $ eval $(minikube -p minikube docker-env)
 ``` 
-``$ minikube docker-env``를 입력하게 되면 저런 결과 값들이 나온다. 그리고 마지막 줄에 존재하는 ``$ eval $(minikube -p minikube docker-env)``를 실행하게 되면 `minikube`와 `docker daemon`과 연결하게 된다. 
+``$ minikube docker-env``를 입력하게 되면 저런 결과 값들이 나온다. 그리고 마지막 줄에 존재하는 ``$ eval $(minikube -p minikube docker-env)``를 실행하게 되면 연결되었다!!
 
 ![after_docker_ps](/assets/images/after_docker_ps.png)
 
-위에 사진은 이전에 다르게 `docker ps`를 했을 경우 나오는 모습이다. `docker` 이미지가 `minikube`에서 동작하는 driver(docker)와 연결되어진 것이기 때문에 **추가적으로** 만들어지 `docker image`는 `minikube` 위에 올라가게 된다!
+위에 사진은 이전과 다르게 `docker ps`를 했을 경우 나오는 모습이다. `docker` 이미지가 `minikube`에서 동작하는 driver(docker)와 연결되어진 것이기 때문에 **추가적으로** 만들어지 `docker image`는 `minikube` 위에 올라가게 된다!
 
 이젠 `minikube`에 올리고 싶은 친구가 있다면 위에 있는 명령어를 입력한 이후에 쿠버네티스에서 동작하게 되면 아주 깔끔하게 동작할 것이다.
 
 ## 실제 실행 결과
 ![after_docker_images](/assets/images/after_docker_images.png)
+
 ![after_kubectl_run](/assets/images/kubectl_run.png)
+
 ![after_kubectl_get_pods](/assets/images/after_kubectl_get_pods.png)
 
 실제 도커 이미지를 빌드하니 `minikube` 내부 `docker image`에 등록되는 모습을 볼 수 있다. 그 이후에 `kubectl run`을 통해서 동작시켜보니 정상적으로 동작하는 것을 볼 수 있다.
@@ -88,7 +95,7 @@ $ eval $(minikube -p minikube docker-env)
 
 
 # 결론
-쿠버네티스를 자주 사용하지는 않기도 하고 로컬에서 테스트를 자주 하지 않다보니 익숙하지 않은 부분이 존재했다. 그러다보니 이것 하나 때문에 너무 많은 시간을 보냈기 때문에 누군가에게 도움이 되기를 바라며 끝내본다~
+쿠버네티스를 자주 사용하지는 않아 셋업하는 과정에서 생각보다 시간을 많이 투자하게 된다. 혹시 모를 누군가에게 적은 시간으로 해결하기 바라면서 마친다.
 
 # ref
 [minikube](https://kubernetes.io/ko/docs/setup/learning-environment/minikube/)
