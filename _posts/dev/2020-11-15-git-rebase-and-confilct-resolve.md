@@ -48,7 +48,7 @@ tags:
 여기서 주의할 것은 rebase를 진행하게 되면 새로운 commit을 만든다는 것입니다. 만약 main에서 나온 A라는 브랜치가 작업을 하고 있었습니다. 거기에서 B라는 브랜치가 A라는 커밋을 기반으로 새로운 브랜치를 만들었습니다. 만약 여기서 A라는 브랜치는 merge방식이 아닌 rebase 방식으로 하는 경우 B는 자신의 base가 (A가 가지고 있는 commit)이 main으로 합쳐지지 않고 그것으로 인해서 엄청난 충돌이 발생할 수 있습니다.
 
 # rebase를 통한 conflict 해결 방법
-conflict이 나는 경우는 똑같은 파일을 합치려고 하는 브랜치와 합쳐지는 브랜치 모두 수정이 된 경우에 해당 됩니다. 해당 부분에 대한 자세한 설명은 `[3-way-merge](https://en.wikipedia.org/wiki/Merge_(version_control))`을 한번 참고해주세요!
+conflict이 나는 경우는 똑같은 파일을 합치려고 하는 브랜치와 합쳐지는 브랜치 모두 수정이 된 경우에 해당 됩니다. 해당 부분에 대한 자세한 설명은 [3-way-merge](https://en.wikipedia.org/wiki/Merge_(version_control))을 한번 참고해주세요!
 
 ## 원리
 
@@ -65,47 +65,52 @@ commit은 diff의 저장이라고 했는데 rebase를 통해서 현재 코드 �
 ![before github pr](/assets/images/2020-11-15-git-rebase/before-github-pr.png)
 
 그러면 이젠 터미널을 켜서 한번 진행해 봅시다.
-1. `git fetch [합치기를 원하는 브랜치]`
+1. `$ git fetch [합치기를 원하는 브랜치]`
+
 upstream이 존재하는 경우 이렇게 하면 된다.
 ```bash
 $ git fetch upstream/main
 ```
-2. `git rebase [합치기를 원하는 브랜치]` 
+
+2. `$ git rebase [합치기를 원하는 브랜치]` 
+
 ![rebase](/assets/images/2020-11-15-git-rebase/git-rebase-1.png)
 ```bash
 $ git rebase upstream/main
 ```
 이렇게 치게 되면 밑에와 같이 어떤 부분에서 conflict이 났는지 나오게 됩니다. 우리는 그것을 해결해야만 합니다!! 반드시!! 
 그리고 `git add [해당 파일 명]` or `git add .` (여기서 `.`은 모든 path 기준으로 밑에 있는 모든 파일을 추가하겠다는 것입니다.)을 진행하고 다시 새로운 commit을 만듭니다. (`git commit -m "Resolve commit"`)
-![status](../../assets/images/2020-11-15-git-rebase/git-rebase-git-status-1.png)
-![conflict-1](../../assets/images/2020-11-15-git-rebase/git-rebase-conflict-1.png)
-![conflict-1](../../assets/images/2020-11-15-git-rebase/git-rebase-conflict-2.png)
-![conflict-1](../../assets/images/2020-11-15-git-rebase/git-rebase-conflict-resolve-1.png)
+![status](/assets/images/2020-11-15-git-rebase/git-rebase-git-status-1.png)
+![conflict-1](/assets/images/2020-11-15-git-rebase/git-rebase-conflict-1.png)
+![conflict-1](/assets/images/2020-11-15-git-rebase/git-rebase-conflict-2.png)
+![conflict-1](/assets/images/2020-11-15-git-rebase/git-rebase-conflict-resolve-1.png)
 
 3. `git rebase --continue` or `git rebase --skip`을 통한 rebase 과정 진행합니다.
-
 지속적으로 발생하는 `conflict`을 해결하고 나게 되면 끝까지 rebase 과정이 진행되고 끝마치게 된다.
 
 4. 그 이후 `git push origin head --force` or `git push origin head --force-with-lease`을 통해서 강제로 push를 진행합니다.
 여기서 강제로 넣는 이유는 위에서 언급했던 것처럼 `rebase`는 새로운 commit을 만들게 된다. 그러기 때문에 기존에 origin에 존재하는 commit과 다르게 됩니다. (당연히 rebase을 진행하는 중에 code 수정을 하지 않은 경우 내용을 완전히 동일합니다.) 그러기 때문에 그냥 하게 되는 경우 `pull`을 하라고 하게 되는게 그렇게 하면 완전히 다시 돌아가기 때문에 강제로 `push --force`를 사용해야 됩니다.
+
 ```
 --force             -- allow refs that are not ancestors to be updated
 --force-with-lease  -- allow refs that are not ancestors to be updated if current ref matches expected value
 ```
+
 참고로 `--force`에는 2가지 옵션이 있는데 `--force-with-lease`를 사용하게 되는 약간 안전할 수 있는게 만약 새로운 commit이 존재하는 경우에 강제로 push 하는 것을 진행하지 않는다. 
 
-![push](../../assets/images/2020-11-15-git-rebase/git-rebase-push-force-1.png)
+![push](/assets/images/2020-11-15-git-rebase/git-rebase-push-force-1.png)
 
 ## 결과
 ![after github pr](/assets/images/2020-11-15-git-rebase/before-github-pr.png)
 위에 사진과 같이 rebase를 진행하게 되면 자연스럽게 해당 문제가 사라지게 된다.
 
 ## 추가적으로
-당연히 folk를 통해서 작업을 진행하더라도 똑같이 진행하면 된다. 
+당연히 folk를 통해서 작업을 진행하고 `upstream`으로 데이터 싱크를 맞추는 경우도 똑같이 진행하면 된다. 저 또한 folk를 통해서 발생하는 conflict 문제를 이렇게 해결했습니다. 동일 레포지토리에서 작업하더라도 이 같은 방식으로 rebase하면 문제를 해결할 수 있습니다.
 
 # 마무리
 어떤 방식이 best practice인지 알기 어렵다. 어떤 경우에는 rebase가 좋고 어떤 경우는 merge가 좋고. 하지만 명확한 것은 독립적인 브랜치를 사용하는 경우에는 rebase에 대한 위험이 크지 않다. 하지만 만약 그렇지 못한 경우에서 rebase를 사용하는 경우 큰 문제를 야기할 수 있다는 것을 알아 두어야 한다.
 
 # ref
 [git rebase](https://git-scm.com/book/ko/v2/Git-%EB%B8%8C%EB%9E%9C%EC%B9%98-Rebase-%ED%95%98%EA%B8%B0)
+
 [HomoEfficio님의 블로그](https://homoefficio.github.io/2017/04/16/Git-%EA%B3%BC%EA%B1%B0%EC%9D%98-%ED%8A%B9%EC%A0%95-%EC%BB%A4%EB%B0%8B-%EC%88%98%EC%A0%95%ED%95%98%EA%B8%B0/)
