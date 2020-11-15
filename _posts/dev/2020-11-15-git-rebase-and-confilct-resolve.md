@@ -80,6 +80,7 @@ $ git rebase upstream/main
 ```
 이렇게 치게 되면 밑에와 같이 어떤 부분에서 conflict이 났는지 나오게 됩니다. 우리는 그것을 해결해야만 합니다!! 반드시!! 
 그리고 `git add [해당 파일 명]` or `git add .` (여기서 `.`은 모든 path 기준으로 밑에 있는 모든 파일을 추가하겠다는 것입니다.)을 진행하고 다시 새로운 commit을 만듭니다. (`git commit -m "Resolve commit"`)
+
 ![status](/assets/images/2020-11-15-git-rebase/git-rebase-git-status-1.png)
 ![conflict-1](/assets/images/2020-11-15-git-rebase/git-rebase-conflict-1.png)
 ![conflict-1](/assets/images/2020-11-15-git-rebase/git-rebase-conflict-2.png)
