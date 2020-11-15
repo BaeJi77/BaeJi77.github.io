@@ -82,9 +82,12 @@ $ git rebase upstream/main
 그리고 `git add [해당 파일 명]` or `git add .` (여기서 `.`은 모든 path 기준으로 밑에 있는 모든 파일을 추가하겠다는 것입니다.)을 진행하고 다시 새로운 commit을 만듭니다. (`git commit -m "Resolve commit"`)
 
 ![status](/assets/images/2020-11-15-git-rebase/git-rebase-git-status-1.png)
+
 ![conflict-1](/assets/images/2020-11-15-git-rebase/git-rebase-conflict-1.png)
-![conflict-1](/assets/images/2020-11-15-git-rebase/git-rebase-conflict-2.png)
-![conflict-1](/assets/images/2020-11-15-git-rebase/git-rebase-conflict-resolve-1.png)
+
+![conflict-2](/assets/images/2020-11-15-git-rebase/git-rebase-conflict-2.png)
+
+![conflict-resolve](/assets/images/2020-11-15-git-rebase/git-rebase-conflict-resolve-1.png)
 
 3. `git rebase --continue` or `git rebase --skip`을 통한 rebase 과정 진행합니다.
 지속적으로 발생하는 `conflict`을 해결하고 나게 되면 끝까지 rebase 과정이 진행되고 끝마치게 된다.
