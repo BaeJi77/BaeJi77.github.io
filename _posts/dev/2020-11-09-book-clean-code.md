@@ -1,5 +1,5 @@
 ---
-title: "Book - Clean code (chapter.2)"
+title: "[Clean code] chapter 2. 이름"
 
 categories:
   - dev
