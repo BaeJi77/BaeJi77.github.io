@@ -1,5 +1,5 @@
 ---
-title: "Rate limit를 통해서 특정 행동을 제약해보자!!"
+title: "Bucket4j - Token bucket 알고리즘을 이용한 Rate limit 라이브러리를 알아보자!!"
 
 categories:
   - dev
