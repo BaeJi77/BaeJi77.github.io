@@ -24,11 +24,10 @@ public class Point{
 public interface Point{
   double getX();
   double getY();
-
   void setCartesian(double x, double y);
+
   double getR();
   double getTheta();
-
   void setPolar(double r, double theta);
 }
 ```
@@ -107,13 +106,13 @@ BufferdOutputStream bos = ctxt.createScratchFileStream(classFileName);
 데이터베이스에서 가공되지 않은 데이터를 실제로 사용하기 위한 데이터로 만들기 위해서 사용되는 자료 구조체이다.
 
 ## 활성 레코드
-활성 레코든느 DTO의 특수한 형태다. 공개 변수가 아니라 비공개 변수에 getter, setter 함수가 있는 자료 구조이지만, 대개 save나 find와 같은 탐색 함수도 제공한다.
+활성 레코드는 DTO의 특수한 형태다. 공개 변수가 아니라 비공개 변수에 getter, setter 함수가 있는 자료 구조이지만, 대개 save나 find와 같은 탐색 함수도 제공한다.
 
 활성 레코드는 데이터베이스 테이블이나 다른 소스에서 자료를 직접 변환한 결과다.
 
 이 활성 레코드에 비지니스 규칙 메소드를 추가해 이런 자료구조를 객체로 취급하는 개발자가 매우 흔하다. 이렇게 되면 자료 구조가도 아니고 객체도 아닌 잡종 구조가 된다.
 
-해결책은 당연하다. 활성 레코든느 자료 구로조 취급한다. 비지니스 규칙을 담으면서 내부 자료를 숨기는 개체는 따로 생성한다.
+해결책은 당연하다. 활성 레코드는 자료 구로조 취급한다. 비지니스 규칙을 담으면서 내부 자료를 숨기는 개체는 따로 생성한다.
 
 ## 결론
 객체는 동작을 공개하고 자료를 숨긴다. 그래서 기존 동작을 변경하지 않으면서 새 객체 타입을 추가할 수 있다. 그 대신 새로운 동작을 추가하기는 어렵다.
