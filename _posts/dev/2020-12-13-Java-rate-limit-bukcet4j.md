@@ -36,7 +36,7 @@ Overview에서 이야기했 듯이 우리는 어떤 경우에는 제한적으로
 
 # 다른 라이브러리
 ## Guava - Rate limiter
-구글에서 만든 자바 라이브러리인 Guava에 Rate limiter라는 친구가 ㅎㅏㄴ다.
+구글에서 만든 자바 라이브러리인 Guava에 Rate limiter라는 친구가 있다.
 
 기능적으로 초당으로 bucket을 관리하는 기능이 있다. 
 

@@ -100,6 +100,9 @@ class RandomStudyTest {
 # 마무리
 우리는 항상 여러 thread를 사용해서 프로그램이 동작하는 것을 인식하는게 좋습니다. `Random`을 사용해도 문제는 없습니다. 하지만 혹시 `Random`을 많이 사용해야된다면, 혹은 작은 일이지만 Thread를 많이 사용하는 환경이라면 `ThreadLocalRandom`가 훨씬 좋은 선택일 수 있습니다.
 
+# Code
+[github](https://github.com/BaeJi77/java-study/blob/main/random/src/test/java/RandomStudyTest.java)
+
 # Ref
 https://www.baeldung.com/java-thread-local-random
 
