@@ -326,6 +326,11 @@ $ cat results.50qps.bin | vegeta plot > plot.50qps.html
 ## 팁
 `Go` 언어에서 해당 라이브러리를 바로 사용할 수 있습니다. 혹시 `Go` 언어를 사용하실 수 있다면 부하테스트 진행을 코들화를 할 수 있습니다.
 
+## code
+`targets.txt`과 예제에 있는 `vegeta shell script`이 있습니다.
+
+[github](https://github.com/BaeJi77/blog-code/tree/main/2020-12/vegeta)
+
 # 마무리
 다른 툴처럼 엄청나게 세밀한 설정이 불가능합니다. 하지만 세밀한 세팅이 필요하지 않고 부하테스트를 진행해보고 싶은 경우 쉽게 사용할 수 있다고 생각합니다.
 
