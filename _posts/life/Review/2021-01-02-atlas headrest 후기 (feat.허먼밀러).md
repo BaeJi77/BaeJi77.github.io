@@ -23,6 +23,8 @@ tags:
 https://www.atlasheadrest.com/
 
 # 구매 제품
+![site](/assets/images/2021-01-02-atlas-headrest/site.png)
+
 제품명: `Atlas Suspension Headrest for Herman Miller Aeron Chair`
 
 링크: [링크](https://www.atlasheadrest.com/store/Atlas-Suspension-Headrest-for-Herman-Miller-Aeron-Chair-p169026810)
@@ -30,6 +32,10 @@ https://www.atlasheadrest.com/
 가격: $179.95 + 배송비 (직배송비 $33.95 / 미국배송 $11.95 + 배대지 약 $10) - 공짜 쿠폰 ($10)
 
 # 구매 후기
+![boxing-1](/assets/images/2021-01-02-atlas-headrest/boxing-1.jpg)
+![boxing-2](/assets/images/2021-01-02-atlas-headrest/boxing-2.jpg)
+![boxing-3](/assets/images/2021-01-02-atlas-headrest/boxing-3.jpg)
+
 일단 이전에는 아마존에서 판매를 했었던 걸로 알고 있다. (실제 아마존에 제품은 등록되어 있다.) 
 
 하지만 한 4개월? 5개월 정도 지켜봤었는데 물량이 계속 안나온다. 아마 공홈에서 구매하라고 판매를 안하는 것 같다.
@@ -52,6 +58,10 @@ https://www.atlasheadrest.com/
 여기에 공개하기는 그렇기 때문에 구글에 다가 검색해보시고 쉽게 찾을 수 있을 것이다. 공짜라도 싸게 구매하실 수 있기를 바랍니다!!!
 
 # 8시간 사용 후기
+![combined-1](/assets/images/2021-01-02-atlas-headrest/combined-1.jpg)
+![combined-2](/assets/images/2021-01-02-atlas-headrest/combined-2.jpg)
+![combined-3](/assets/images/2021-01-02-atlas-headrest/combined-3.jpg)
+
 오늘도 어김없이 의자에 앉아서 이것저것 하고 있는데 정말로 편하다. 정말 정말 편하다.
 
 솔직히 이 좋은 의자를 쓰면서 오히려 몸이 더 안좋아지는 것이 아닌가 싶었다. (사실 옛날부터 목이 많이 안좋았는데 최근 일하면서 더 안좋아짐... ㅠ.ㅠ)
