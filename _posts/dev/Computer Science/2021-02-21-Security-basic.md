@@ -1,5 +1,5 @@
 ---
-title: "Security 기본 개념"
+title: "Security 기본 개념 - basic"
 
 categories:
   - cs
