@@ -26,8 +26,6 @@ tags:
 
 > 람다식은 메서드의 매개변수로 전달되어지는 것이 가능하고, 메서드의 결과로 반환될 수도 있다.
 
-
-
 ## 람다식 사용법
 ### 형태
 ``` java
@@ -54,19 +52,86 @@ Integer max(int a, int b) {
 (int a, int b) -> a > b ? a : b;
 ```
 
-
-
 ## 함수형 인터페이스
 
+자바에서 모든 메서드는 클래스 내에 포함되어야 하는데, 람다식은 어떤 클래스에 포함되는 것일까? 람다식이 메서드와 동등한 것이라고 생각했지만, 사실 람다식은 익명 클래스의 객체와 동등하다.
 
+``` java
+타입 f = (int a, int b) -> a > b ? a : b;
+---
+
+interface MyFunction {
+    public abstract int max(int a, int b);
+}
+
+MyFunction f = new MyFunction() {
+                      public int max(int a, int b) {
+                          return a > b ? a : b;
+                      }
+              };
+
+int big = f.max(5, 3);
+```
+
+MyFunction 인터페이스에 정의된 메서드 max()는 람다식 `(int a, int b) -> a > b ? a : b;`와 메서드의 선언부가 일치한다. 따라서 익명 객체를 람다식으로 대체할 수 있다.
+
+``` java
+MyFunction f = (int a, int b) -> a > b ? a : b;
+int big = f.max(5, 3);
+```
+
+위에서 말한 것처럼 람다식은 익명 클래스의 객체와 동등하고 그러기 때문에 익명 객체의 매서드를 람다식으로 바로 대체할 수 있는 것이다. 이렇게 인터페이스를 통해서 람다식을 다루는 인터페이스를 '함수형 인터페이스'라고 부른다.
+
+기본적으로 함수형 인터페이스는 오직 하나의 추상 메서드만 정의되어 있어야 한다는 제약이 있다. `@FunctionalInterface`을 사용하는 경우 컴파일 단계에서 확인해준다.
 
 ## Variable Capture
 
+익명 구현 객체를 포함해 객체를 만드는 행위를 진행하면서 `new`라는 키워드를 사용하게 된다. 그 과정에서 해당 데이터는 heap에 저장되게 된다.
+
+하지만 그 익명 구현 객체를 사용하면서 로컬 변수를 사용하는 경우가 존재한다. 그 로컬 변수는 stack에 저장되게 되고 해당 함수가 끝나게 되면 해당 데이터는 메모리에서 참조를 할 수 없다.
+
+그런 문제를 해결하기 위해서 자바에서는 `Variable Capture`를 통해서 해결하도록 한 것이다.
+
+### 로컬 변수 챕쳐
+
+Local variable은 조건이 final 또는 effectively final이어야 한다.
+
+effectively final은 Java 8에 추가된 syntatic sugar의 일종으로 초기화된 이후 값이 한번도 변경되지 않았다는 것을 말한다.
+
+왜 `final`이어야 할까? 그 이유는 힙 영역에 있는 데이터들은 여러 쓰레드들이 접근할 수 있고 그러다보니 동시성에 대한 문제가 발생할 수 있다. 그러다보니 한번 선언 이후에 변경할 수 없는, 혹은 변경이 없는 변수만 사용이 가능한 것이다.
+
 ## 메소드, 생성자 레퍼런스
+
+람다식을 더욱 간결하게 표현할 수 있는 방법이 있다.
+
+### 메소드 레퍼런스
+``` java
+Function<String, Integer> f = (String s) -> Integer.parseInt(s);
+
+Function<String, Integer> f = Integer::parseInt;
+---
+BiFunction<String, String, Boolean> f = (s1, s2) -> s1.equals(s2);
+
+BiFunction<String, String, Boolean> f = String::equals;
+```
+기본적으로 받아내는 파라미터가 생략되며 해당 메소드에 인스턴스나 클래스와 실제 메소드이름을 `::`을 사이에 두고 표현된다.
+
+
+### 생산자 레퍼런스
+``` java
+Supplier<MyClass> s = () -> new MyClass();    
+Supplier<MyClass> s = MyClass::new;
+
+---
+
+Function<Integer, MyClass> f = (i) -> new MyClass(i);    
+Function<Integer, MyClass> f2 = MyClass::new;
+```
+매개변수가 필요한 생성자라면, 매개변수의 개수에 따라 알맞은 함수형 인터페이스를 사용하면 된다. 필요에 따라 함수형 인터페이스를 새로 정의해야 한다.
 
 
 # ref
-
+[야돈님의 블로그](https://yadon079.github.io/2021/java%20study%20halle/week-15)
 
 # 라이브 방송
 ## 방송 전 토크
