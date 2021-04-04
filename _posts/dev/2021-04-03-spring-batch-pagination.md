@@ -31,6 +31,7 @@ Spring batch와 관련해서는 내가 잘 설명할 자신이 없다. 간단하
 
 ## 여기서 질문
 > Spring batch를 왜 사용했나요? 
+
 꼭 Spring batch를 써야되는 것은 아니었지만 그래도 
 1. 어느정도 자동화해주는 부분이 있었고 batch 시스템을 제공해준다는 것이 있었기에 선택하게 되었다. 
 2. 기존에 서버에 붙어 있던 컴포넌트였고 자바로 되어 있었기 때문에 migration도 편하다는 장점이 있었다. 
@@ -170,7 +171,7 @@ writer=[People(number=4, name=hoon, job=developer), People(number=5, name=baeji,
 ```
 
 # 느낀점
-생각보다 DB를 제외한 작업에 대해서 친절한 편은 아니었다고 생각한다. DB에 대해서는 편한 부분이 받기는 하지만 다른 자원을 reader로 활용해서 한다면 다른 것도 한번 생각해보긴 해야될 것 같다.
+생각보다 DB를 제외한 작업에 대해서 친절한 편은 아니었다고 생각한다. DB에 대해서는 편한 부분이 있다고 생각하지만 다른 자원을 reader로 활용해서 한다면 다른 것도 한번 더 생각해보긴 해야될 것 같다.
 
 # ref
 [우아한 형제 개발 블로그](https://woowabros.github.io/experience/2020/02/05/springbatch-querydsl.html)
