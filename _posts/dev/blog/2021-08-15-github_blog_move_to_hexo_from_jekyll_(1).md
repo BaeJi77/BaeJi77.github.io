@@ -57,9 +57,7 @@ changed 58 packages, and audited 59 packages in 1s
 found 0 vulnerabilities
 ```
 
-## Hexo
-
-### cli
+## Hexo cli
 
 ``` bash
 $ hexo help                            
@@ -129,7 +127,7 @@ INFO  Hexo is running at http://localhost:4000 . Press Ctrl+C to stop.
 
 위에 실행 결과에 보이는 주소(`http://localhost:4000`)에 들어가보자. 
 
-![hexo-quick-start-index](./hexo-default-index.png)
+![hexo-quick-start-index](/_posts/dev/blog/hexo-default-index.png)
 
 # Icarus theme 적용해보기
 
@@ -197,7 +195,7 @@ $ hexo server
 
 이렇게 실행하게 되면 이젠 아주 만족스러운 태마 적용이 끝나게 된다. 만약 해당 이미지처럼 보이지 않거나 만약 처음 실행했을 때 이상한 warn 메시지를 봤다면 hexo server를 취소하고 다시 실행하는 것을 추천한다.
 
-![hexo-icarus-theme-index](./hexo-icarus-theme-index.png)
+![hexo-icarus-theme-index](/_posts/dev/blog/hexo-icarus-theme-index.png)
 
 
 # 마무리
