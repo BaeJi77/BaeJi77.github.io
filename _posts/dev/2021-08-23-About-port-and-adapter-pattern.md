@@ -1,7 +1,7 @@
 ---
 title: "spring batch: Reader에서 pagination 마음대로 사용해보기"
 description: "How to set custom pagination about spring batch"
-date: "2021-08-23"
+date: "2021-08-23 00:00:00"
 
 categories:
   - dev
