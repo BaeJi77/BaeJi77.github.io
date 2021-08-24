@@ -23,6 +23,8 @@ tags:
 
 해당 패턴은 연관성이 없는 파일들이 해당 패키지에 들어갑니다. 당연히 해당 기능을 하는 집단을 찾기 위해서는 빠르게 찾을 수 있지만 거기에서 연관된 다른 기능 모듈들을 찾기 위해서는 찾는 과정이 필요합니다.
 
+### layered pattern 패키지 구조
+
 ``` 
 └── com
     └── test
@@ -68,6 +70,9 @@ in-port의 구현체는 내부 핵심 로직인 service입니다. 그렇게 되�
 
 out-port의 구현체는 외부 모듈과 직접 통신하거나 그것을 감싼 모듈일 것입니다. 예를 들어 redis에 요청을 보내는 모듈은 adapter가 되게 됩니다.
 
+### Port And Adapter pattern 패키지 구조
+
+> 정답이 아닙니다.
 
 ```
 └── com
@@ -98,6 +103,8 @@ out-port의 구현체는 외부 모듈과 직접 통신하거나 그것을 감�
                     ├── StoreController.java
                     └── StoreRequest.java
 ```
+[출처: 라인엔지니어링 블로그](https://engineering.linecorp.com/ko/blog/port-and-adapter-architecture/)
+
 
 이전 구조와는 다르게 연관성이 있는 패키지들을 한곳에 모아둠으로서 조금 더 구조를 파악하기 쉽습니다.
 
@@ -153,8 +160,8 @@ class TestUserService {
             │   │   ├── User.java
             │   │   └── Item.java
             │   └── service
-            │   │   ├── ...
-            │   │   └── ...
+            │       ├── ...
+            │       └── ...
             └── application (web-application, scheduler, etc..)
                 ├── adapter
                 │   ├── in
@@ -176,6 +183,7 @@ class TestUserService {
 - O: O
   - interface 기반으로 새로운 adapter 변경에 대해서는 자유롭고 수정에 대해서는 어떤 변경 없이도 구현이 가능하다.
 - L: X
+  - “상위 타입의 객체를 하위 타입의 객체로 치환해도 상위 타입을 사용하는 프로그램은 정상적으로 동작해야 한다.”
 - I (인터페이스 분리 원칙): O
   - 클라이언트가 오직 필요로하는 인터페이스(메시지)에 대해서만 의존한다.
   - 모든 기능에 대해서 Port를 만들고 그것에 대한 adapter를 만들기 때문에 가능하다. 
