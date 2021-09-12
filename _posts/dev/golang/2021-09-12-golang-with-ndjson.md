@@ -66,6 +66,7 @@ ndjson은 두가지를 만족해야 된다.
 [실제 소스 코드 참고](https://github.com/BaeJi77/blog-code/tree/main/2021-09/go-with-ndjson)
 
 - `main.go` 실행 결과
+
 ``` bash 
 $ ./ndjson                                                                                                                                                                                              
 [GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
@@ -82,6 +83,7 @@ $ ./ndjson
 ```
 
 - 요청 데이터
+
 ``` bash
 $ curl --location --request POST 'localhost:8080/store' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
@@ -95,12 +97,14 @@ $ curl --location --request POST 'localhost:8080/store' \
 ```
 
 - 저장된 데이터
+
 ``` ndjson
 {"Data":"hello hoon","httpStatus":"200","Date":"20210512123456"}
 {"Data":"hello baeji","httpStatus":"200","Date":"20210512123456"}
 ```
 
 - 데이터 보기
+
 ``` bash
 $ curl --location --request GET 'localhost:8080/data'
 [{"Data":"hello hoon","httpStatus":"200","Date":"20210512123456"},{"Data":"hello baeji","httpStatus":"200","Date":"20210512123456"}]
