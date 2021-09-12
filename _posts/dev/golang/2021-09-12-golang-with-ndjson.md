@@ -98,7 +98,7 @@ $ curl --location --request POST 'localhost:8080/store' \
 
 - 저장된 데이터
 
-``` ndjson
+``` json
 {"Data":"hello hoon","httpStatus":"200","Date":"20210512123456"}
 {"Data":"hello baeji","httpStatus":"200","Date":"20210512123456"}
 ```
