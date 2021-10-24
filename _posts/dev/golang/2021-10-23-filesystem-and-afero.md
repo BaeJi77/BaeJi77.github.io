@@ -86,23 +86,6 @@ golang에서 기본적으로 제공하는 `os`, `io` 패키지에서 제공하�
 
 메모리에서 완벽하게 동작하기 때문에 그것을 통해 내가 구현한 파일시스템에 대해서 테스트에 매우 용이하게 사용할 수 있습니다. 그리고 어떤 테스트 끼리 간섭이 없고 그것을 위해서 따로 처리하지 않아도 됩니다. 그리고 완벽하게 cleanup되기 때문에 편리하게 사용가능합니다.
 
-### example
-
-``` go
-func TestExist(t *testing.T) {
-	appFS := afero.NewMemMapFs()
-	// create test files and directories
-	appFS.MkdirAll("src/a", 0755)
-	afero.WriteFile(appFS, "src/a/b", []byte("file b"), 0644)
-	afero.WriteFile(appFS, "src/c", []byte("file c"), 0644)
-	name := "src/c"
-	_, err := appFS.Stat(name)
-	if os.IsNotExist(err) {
-		t.Errorf("file \"%s\" does not exist.\n", name)
-	}
-}
-```
-
 ## 적용
 
 ### step 1
