@@ -73,11 +73,8 @@ $ go build -tags=... xxxxx
 
 그렇다고 해서 1.17에서 두번째 방법을 지원하지 않는 것은 1.17버전에서도 저렇게 작성하는 것은 가능합니다. 
 
-``` txtx
-//go:build lines
-
-The go command now understands //go:build lines and prefers them over // +build lines. The new syntax uses boolean expressions, just like Go, and should be less error-prone. As of this release, the new syntax is fully supported, and all Go files should be updated to have both forms with the same meaning. To aid in migration, gofmt now automatically synchronizes the two forms. For more details on the syntax and migration plan, see https://golang.org/design/draft-gobuild.
-```
+> //go:build lines
+> The go command now understands //go:build lines and prefers them over // +build lines. The new syntax uses boolean expressions, just like Go, and should be less error-prone. As of this release, the new syntax is fully supported, and all Go files should be updated to have both forms with the same meaning. To aid in migration, gofmt now automatically synchronizes the two forms. For more details on the syntax and migration plan, see https://golang.org/design/draft-gobuild.
 
 위에 내용은 1.17 릴리즈 노트에 나와있는 내용을 가져와봤습니다.
 
@@ -87,33 +84,32 @@ The go command now understands //go:build lines and prefers them over // +build 
 
 ``` 
 //go:build linux
-
-...
----
-$ go build --tags=linux
 ```
-
 2. linux or drawin
 ``` 
 //go:build linux drawin
 ```
-
 3. Not linux 
 ``` 
 //go:build !linux
 ```
+4. linux and 386
+```
+//go:build (linux && 386)
+```
+
 
 - 특정 파일에서 내가 컴파일하지 않은 파일이 있는 경우에는 어떻게 될까?
 
 ![](/assets/images/2021-12-05-golang-build/golang-build.png)
-
-drawin을 태그해서 빌드해보겠습니다. 과연어떻게 될까요?
 
 ``` bash
 $ go build -tags=drawin                                                                                                                              (imon/lens)
 # golang-build
 ./main.go:9:2: undefined: PrintLinux
 ```
+
+drawin을 태그해서 빌드해보겠습니다. 과연 어떻게 될까요?
 
 위에 보이는 것과 같이 해당 파일을 찾지 못하고 에러가 발생합니다. 
 
@@ -127,7 +123,7 @@ $ go build -tags=drawin                                                         
 *_GOOS_GOARCH
 ```
 
-그러니까 예를 들어서 `source_windows_amd64.go` 이렇게 되는 경우 window에 amd64를 명확하게 보여주자는 것입니다. 단순히 글을 읽을 때는 안이상했는데 과연 주석하게 되면 어떻게 될까나?
+그러니까 예를 들어서 `source_windows_amd64.go` 이렇게 되는 경우 window에 amd64를 명확하게 보여주자는 것입니다. 단순히 글을 읽을 때는 안이상했는데 과연 naming만 지키고 주석을 지운다면 어떻게 될까나?
 
 실제로 주석을 지우고 실행해도 잘 동작합니다. 그러니까 파일 naming을 지킨 이후에 `// +build`를 하지 않아도 제대로 빌드가 됩니다.
 
@@ -163,4 +159,7 @@ $ go build -tags=release
 
 # ref
 
-- [log 패키지](https://pkg.go.dev/log)
+- [공식 문서](https://pkg.go.dev/cmd/go#hdr-Build_constraints)
+- https://go.dev/doc/go1.17
+- https://pkg.go.dev/go/build
+
