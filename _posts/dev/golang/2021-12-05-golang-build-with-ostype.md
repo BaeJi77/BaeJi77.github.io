@@ -11,7 +11,7 @@ tags:
   - build
 ---
 
-##### 소스코드: https://github.com/BaeJi77/blog-code/tree/main/2021-12/golang-build
+- [예제 소스코드](https://github.com/BaeJi77/blog-code/tree/main/2021-12/golang-build)
 
 # cross compiler
 
@@ -74,6 +74,7 @@ $ go build -tags=... xxxxx
 그렇다고 해서 1.17에서 두번째 방법을 지원하지 않는 것은 1.17버전에서도 저렇게 작성하는 것은 가능합니다. 
 
 > //go:build lines
+> 
 > The go command now understands //go:build lines and prefers them over // +build lines. The new syntax uses boolean expressions, just like Go, and should be less error-prone. As of this release, the new syntax is fully supported, and all Go files should be updated to have both forms with the same meaning. To aid in migration, gofmt now automatically synchronizes the two forms. For more details on the syntax and migration plan, see https://golang.org/design/draft-gobuild.
 
 위에 내용은 1.17 릴리즈 노트에 나와있는 내용을 가져와봤습니다.
