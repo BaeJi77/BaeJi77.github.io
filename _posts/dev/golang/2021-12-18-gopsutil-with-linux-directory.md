@@ -1,5 +1,5 @@
 ---
-title: "Golang에 gopsutil를 통해서 system 정보를 얻는 방법 (+ linux 기본 directory)"
+title: "System information (metrics)에 대해서 (+ gopsutil에 대해서)"
 description: ""
 
 categories: 
@@ -42,8 +42,9 @@ cpu 정보와 같은 것들에 대해서 `top` 이라는 명령어가 유명한 
 - gotop (https://github.com/cjbassi/gotop)
 - htop (https://htop.dev/)
 
-![gotop](https://github.com/cjbassi/gotop/blob/master/assets/demos/demo.gif)
+![gotop](/assets/images/2021-12-18-gopsutil/demo.gif)
 출처: `gotop` github
+
 
 위에 있는 사진은 `gotop`이 실제로 동작하고 있는 모습입니다. commandline에서 실행하게 되면 실시간으로 정보를 얻을 수 있습니다.
 
@@ -110,6 +111,7 @@ func main() {
 		fmt.Println(stat)
 	}
 }
+
 ---
 
 Total: 34359738368, Free:202891264, UsedPercent:55.978644% 
@@ -119,7 +121,9 @@ Total: 34359738368, Free:202891264, UsedPercent:55.978644%
 
 ```
 
-위에 결과처럼 시스템 정보들을 얻을 수 있습니다. 이것뿐만 아니라 disk, process 외에 여러 정보들을 얻을 수 있습니다. 
+위에 결과처럼 시스템 정보들을 얻을 수 있습니다. 이것뿐만 아니라 `disk`, `process` 외에 여러 정보들을 얻을 수 있습니다. 
+
+그리고 위에 결과에서 알 수 있듯이 `String()`을 통해서 json 형태로 출력되는 것을 볼 수 있습니다. 이것을 이용하면 어떤 변환없이 바로 외부로 요청을 보낼 수도 있을 것 같습니다.
 
 # 과연 정보를 어떻게 가져올까?
 
