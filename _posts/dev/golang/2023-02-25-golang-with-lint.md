@@ -1,5 +1,5 @@
 ---
-title: "golang with golangci-golint"
+title: "golang with golangci-golint (feat.github action)"
 description: ""
 
 categories: 
