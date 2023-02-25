@@ -15,9 +15,8 @@ tags:
 
 # About lint(linter)
 
-``` txet
-린트(lint) 또는 린터(linter)는 소스 코드를 분석하여 프로그램 오류, 버그, 스타일 오류, 의심스러운 구조체에 표시(flag)를 달아놓기 위한 도구들을 가리킨다.[1] 이 용어는 C 언어 소스 코드를 검사하는 유닉스 유틸리티에서 기원한다.
-```
+> 린트(lint) 또는 린터(linter)는 소스 코드를 분석하여 프로그램 오류, 버그, 스타일 오류, 의심스러운 구조체에 표시(flag)를 달아놓기 위한 도구들을 가리킨다.[1] 
+> 이 용어는 C 언어 소스 코드를 검사하는 유닉스 유틸리티에서 기원한다.
 
 위에 있는 내용은 [위키페디아](https://ko.wikipedia.org/wiki/%EB%A6%B0%ED%8A%B8_(%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4))에 있는 내용을 가져온 것입니다. 
 
@@ -194,9 +193,9 @@ $ golangci-lint run -h
 
 ## Warning
 
-``` text
-The config file has lower priority than command-line options. If the same bool/string/int option is provided on the command-line and in the config file, the option from command-line will be used. Slice options (e.g. list of enabled/disabled linters) are combined from the command-line and config file.
-```
+> The config file has lower priority than command-line options. 
+> If the same bool/string/int option is provided on the command-line and in the config file, the option from command-line will be used. 
+> Slice options (e.g. list of enabled/disabled linters) are combined from the command-line and config file.
 
 공식 사이트에서 나온 문장을 가져온 것입니다. 한마디로 file에서 설정한 값이 있다고 하더라고 command-line을 실행했던 설정 값으로 사용된다는 것입니다. (Slice로 된 경우에는 combine가 됩니다.)
 
