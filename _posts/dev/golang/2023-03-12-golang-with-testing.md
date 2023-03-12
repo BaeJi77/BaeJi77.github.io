@@ -106,6 +106,20 @@ func TestT(t *testing.T) {
 
 	t.Helper()
 }
+
+---
+go test .                               
+before Run()
+TestFoo
+TestBar
+sub-test-1
+--- FAIL: TestT (0.00s)
+    main_test.go:35: 
+    main_test.go:36: error string format
+FAIL
+After Run()
+FAIL    github.com/BaeJi77/golang-testing.git   0.577s
+FAIL
 ```
 
 이것 말고도 `Log()`와 같은 메소드들을 추가로 지원하고 있습니다.
@@ -152,6 +166,20 @@ golang test에 대한 beachmark에 대해서 모두 실행할 수 있을 것 입
 
 ``` bash
 $ go test -cover
+
+---
+before Run()
+TestFoo
+TestBar
+sub-test-1
+--- FAIL: TestT (0.00s)
+    main_test.go:35: 
+    main_test.go:36: error string format
+FAIL
+        github.com/BaeJi77/golang-testing.git   coverage: 0.0% of statements
+After Run()
+FAIL    github.com/BaeJi77/golang-testing.git   0.414s
+FAIL
 ```
 
 ``` bash
