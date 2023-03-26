@@ -16,7 +16,7 @@ tags:
 글에 대한 코드는 [링크](https://github.com/BaeJi77/golang-testing)를 통해서 볼 수 있습니다.
 
 # 이전 글
-1. https://baeji77.github.io/dev/golang/golang-with-testing/
+1. [golang testing package](https://baeji77.github.io/dev/golang/golang-with-testing/)
 
 # 소개
 
