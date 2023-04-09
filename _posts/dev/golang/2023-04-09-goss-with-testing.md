@@ -63,14 +63,14 @@ Count: 1, Failed: 0, Skipped: 0
 - `add` 및 `autoadd`: 다양한 시스템 구성 요소에 대한 YAML 규칙 파일을 생성하는 데 사용됩니다.
 
 ```bash
-root@2c16a256cb0e:/go/src/app# goss add package nginx
+$ goss add package nginx
 Adding Package to './goss.yaml':
 
 nginx:
   installed: false
 
 
-root@2c16a256cb0e:/go/src/app# goss add service nginx
+$ goss add service nginx
 Adding Service to './goss.yaml':
 
 nginx:
@@ -78,14 +78,14 @@ nginx:
   running: false
 
 
-root@2c16a256cb0e:/go/src/app# goss add file nginx
+$ goss add file nginx
 Adding File to './goss.yaml':
 
 /go/src/app/nginx:
   exists: false
   contains: []
 
-root@2c16a256cb0e:/go/src/app# cat goss.yaml 
+$ cat goss.yaml 
 file:
   /go/src/app:
     exists: true
@@ -248,7 +248,7 @@ file:
 위에서 부터 `goss.yaml`, `new-goss.yaml`, `skip-goss.yaml`입니다. `goss.yaml`이 실제로 실행되면서 두번째 있는 `new-goss.yaml` 정보를 가져오는 것을 볼 수 있습니다.
 
 ```bash
-root@e23b8ea63550:/go/src/app# goss render
+$ goss render
 file:
   /go/src/app:
     exists: true
@@ -300,7 +300,7 @@ gossfile:
 ```
 
 ```bash
-root@a574985d1674:/go/src/app# goss v -f documentation
+$ goss v -f documentation
 File: /go/src/app: exists: matches expectation: [true]
 File: /go/src/app: filetype: matches expectation: ["directory"]
 File: /hello-world: exists:
