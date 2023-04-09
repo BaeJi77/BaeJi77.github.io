@@ -42,8 +42,7 @@ chmod +rx /usr/local/bin/goss
 
 - 다른 OS 지원에 대해서
 
-https://github.com/goss-org/goss/blob/master/docs/platform-feature-parity.md
-
+[github 링크](https://github.com/goss-org/goss/blob/master/docs/platform-feature-parity.md)
 
 ## Usage
 
