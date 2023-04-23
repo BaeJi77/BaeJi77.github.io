@@ -11,7 +11,7 @@ tags:
   - testcontainers
 ---
 
-글에 대한 코드는 [링크]()를 통해서 볼 수 있습니다.
+글에 대한 코드는 [링크](https://github.com/BaeJi77/exmple-testcontainers-golang)를 통해서 볼 수 있습니다.
 
 # integration test란
 
@@ -29,14 +29,19 @@ tags:
 
 `integration test`는 여러 컴포넌트 간에 정상적으로 기능이 동작하는지 테스트를 한다고 생각이 듭니다. 
 
-여러 component간 통합을 하기 때문에 해당 application과 연결된 다른 application이 필요하기도 하며 DB를 직접 호출해야되는 경우에는 DB가 필요하기도 합니다.
+## 내가 생각하는 integration test는
 
+여러 component간 연결을 하기 때문에 해당 application과 연결된 다른 application이 필요하기도 하며 DB를 직접 접근하는 경우에는 DB가 필요하기도 합니다.
 
-이런 경우 test를 진행하기 전에 configuration을 조정하여서 우리가 임시로 동작하게 만든 가짜 application(web endpoint)이나 동작이 비슷한 db를 대신 호출할 수 있도록 하기도 합니다. (예시로는 test 과정에서 test server를 동작시키거나 spring에서 rdb와 비슷한 동작을 하는 h2 db를 동작시키는 것입니다.)
+이런 경우 test를 진행하기 전에 configuration을 조정하여서 우리가 임시로 동작하게 만든 동작을 비슷하게 하는 application이나 db를 대신 호출할 수 있도록 하기도 합니다. (예시로는 test 과정에서 test server를 동작시키거나 application 내부 db를 동작시키는 것을 생각합니다.)
 
-하지만 이런 경우 실제와 다른 동작을 해서 test가 정상적으로 되지 않은 경우가 있어 문제를 일으킬 수도 있으며 테스트에 대한 신뢰도가 떨어질수도 있습니다.
+하지만 이런 경우 실제와 다른 동작을 해서 test가 정상적으로 되지 않은 경우가 있을 수 있으며 그런 과정에서 테스트에 대한 신뢰도가 떨어질수도 있습니다. (spring에서 사용하는 로컬db인 h2같은 경우 rdb처럼 동작하지만 실제로 mysql이나 여러 rdb와는 다른 부분이 존재합니다.)
 
-그래서 실제로 해당 application이나 db를 실행시키는게 좋지만 그것 또한 쉽지 않은 일입니다. 만약 test를 위해서 해당 application나 db를 계속 동작시킨다면 리소스 소비 및 실제로 테스트가 실패할 수 있습니다.
+그런 문제점을 해결하기 위해서 실제로 해당 application이나 db를 실행시키는게 좋지만 그것 또한 쉽지 않은 일입니다.
+
+test를 위해서 해당 application나 db를 계속 동작시킨다면 리소스 낭비 및 실제로 테스트가 실패할 수 있습니다. 계속 실행시켜둬야되는 이유로는 테스트 코드 이전에 실행을 멈춰있다가 테스트 실행 전에 실행시키는 것이 매우 어렵다라고 판단합니다.
+
+그리고 db같은 경우 데이터를 계속 적재한다거나 혹은 그렇지 않다고 하더라도 동시에 여러곳에서 테스트를 하게 되면 테스트가 정상적으로 동작하지 않을 수 있습니다.
 
 # testcontainers란
 
