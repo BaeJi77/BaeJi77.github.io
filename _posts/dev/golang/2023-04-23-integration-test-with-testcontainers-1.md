@@ -50,7 +50,7 @@ test를 위해서 해당 application나 db를 계속 동작시킨다면 리소�
 
 Testcontainer는 docker를 이용해서 test code 상에서 특정 docker image를 동작시킬 수 있도록 해주는 library입니다. docker container 실행에 대해서 여러 옵션을 줄 수 있습니다. (test시마다 container을 죽이고 뛰울 수 있으며 계속 하나의 container가 동작하게도 가능합니다.)
 
-여러 언어를 지원하고 있으며 `java`, `go`, `rust`, `.net`, `node.js`, `python`, `haskell`를 지원하고 있습니다. `testcontainer-java`가 github star가 가장 많이 있습니다. 
+`java`, `go`, `rust`, `.net`, `node.js`, `python`, `haskell`과 같이 여러 언어를 지원하고 있습니다. `testcontainer-java`가 github star가 가장 많이 있습니다. 
 
 ## Testcontainer의 장점 in official document
 - Data access layer integration tests: use a containerized instance of a MySQL, PostgreSQL or Oracle database to test your data access layer code for complete compatibility, but without requiring complex setup on developers' machines and safe in the knowledge that your tests will always start with a known DB state. Any other database type that can be containerized can also be used.
@@ -66,14 +66,14 @@ Testcontainer는 docker를 이용해서 test code 상에서 특정 docker image�
 2. 완벽한 테스트를 위해 실제 컴포넌트 관리에 대한 어려움과 리소스 낭비 문제 -> 테스트때 마다 실제로 동작하는 컴포넌트이지만 임시적으로 만들기 때문에 관리할 필요없으며 리소스 낭비가 많이 줄어듬.
 3. 실제 컴포넌트 동작시 테스트가 정상적으로 되지 않을 수 있는 문제(db같은 경우 데이터가 축적되거나 동시에 테스트가 동작할 경우) -> 테스트마다 혹은 test group에 따라서 container(실제 컴포넌트) 라이프 사이클을 핸들링할 수 있기 때문에 독립적인 환경처럼 테스트 실행 가능
 
-## 요구사항
+## System requirements
 
 특정 언어마다 요구사항이 다른것 같으며 어떤 환경에서 실행하냐에 따라서 요구사항이 다릅니다. 그럼에도 가장 기본적으로는 `docker`을 실행할 수 있는 환경이어야 됩니다.
 
 - [Testcontainers-go system_requirements](https://golang.testcontainers.org/system_requirements/)
 - [Testcontainers-java system_requirements](https://www.testcontainers.org/supported_docker_environment/)
 
-## 사용법
+## Example
 
 Testcontainers-go를 이용해서 간단한 예시를 보여드리겠습니다.
 
@@ -138,7 +138,7 @@ func TestSimpleRedis(t *testing.T) {
 }
 ```
 
-## testcontainer의 옵션값.
+## testcontainer의 옵션값
 
 ### testcontainers.ContainerRequest
 
