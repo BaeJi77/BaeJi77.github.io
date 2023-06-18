@@ -48,7 +48,7 @@ func helloWorld() {
 
 Go에서 `main goroutine`은 프로그램이 시작될 때 자동으로 생성됩니다. 프로그램 실행을 위한 진입점 역할을 합니다. `main` 함수에 작성된 모든 코드는 이 `goroutine` 내에서 실행됩니다. 
 
-Go에서 모든 실행에 대해서 `goroutine`이 동작하고 있다고 생각하면 되지만 `main goroutine`은 일반적인 goutine과 다르게 유일하게 생성되는 `goroutine`이라는 것을 기억하셔야 됩니다.
+Go에서 모든 실행에 대해서 `goroutine`이 동작하고 있다고 생각하면 되지만 `main goroutine`은 일반적인 goutine과 다르게 어떤 누구에 의해서 생성되지 않은 유일한 `goroutine`이라는 것을 기억하셔야 됩니다.
 
 
 # `goroutine`의 장점
@@ -83,7 +83,9 @@ func RaceConditionMethoe() {
   mu.Lock()
   defer mu.Unlock()
 
+  // start race condition code section
   ...
+  // end race condition code section
 }
 ```
 
@@ -92,9 +94,9 @@ var mu &sync.Mutex
 
 func RaceConditionMethoe() {
   mu.Lock()
-  // start raceo condition code section
+  // start race condition code section
   ...
-  // end raceo condition code section
+  // end race condition code section
   mu.Unlock()
 }
 ```
@@ -118,12 +120,15 @@ Goroutine 같은 경우는 만드는 것에 대해서 막지 못합니다. 단�
 # FAQ
 
 Q: 하나의 함수 내에서 여러 개의 `goroutine`을 생성할 수 있나요?
+
 A: 예, 하나의 함수 내에서 각각의 `goroutine`을 생성하기 위해 `go` 키워드를 사용할 수 있습니다. 많은 데이터를 병렬적으로 빠르게 처리하고 싶을때 `for` statement를 이용해서 가능합니다.
 
 Q: `goroutine`은 한 개의 CPU에서만 실행되나요?
+
 A: 아니요, `goroutine`은 여러 개의 CPU에서 동시에 실행될 수 있도록 설계되었습니다. 이를 통해 사용 가능한 리소스를 효율적으로 활용할 수 있습니다.
 
 Q: 실행 중인 `goroutine`을 취소할 수 있나요?
+
 A: Go는 `goroutine`에 대한 직접적인 취소 메커니즘을 제공하지 않습니다. 그러나 `context 취소` 또는 `채널 기반의 신호 전달`과 같은 기법을 사용하여 `goroutine`을 graceful하게 종료할 수 있습니다.
 
 # 결론
