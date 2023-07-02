@@ -65,9 +65,14 @@ func main() {
 	copiedData2.ModifyValue(11) // This will modify the original data
 
 	// Print the values
-	fmt.Println("Original Data:", data2.Value)
-	fmt.Println("Copied Data:", copiedData2.Value)
+	fmt.Println("Original Data 2:", data2.Value)
+	fmt.Println("Copied Data 2:", copiedData2.Value)
 }
+---
+Original Data: 1
+Copied Data: 10
+Original Data 2: 11
+Copied Data 2: 11
 
 ```
 
@@ -190,7 +195,7 @@ if err != nil {
 - Go 언어에서 interface는 해당 인터페이스를 사용하는 패키지에 속합니다. 인터페이스를 구현하는 패키지는 구체적인 유형을 반환해야 합니다. (interface를 반환하는 것이 아니라.) 이렇게 하면 새로운 메서드를 구현에 추가할 때 광범위한 리팩토링이 필요하지 않습니다.
 
 -> interface를 사용하는 쪽에서 만들라고 이야기하는 것 같습니다. 그리고 해당 의존성이 있어야될 것을 외부에서 파라미터로 주입받은 형태로 사용하라고 하는것 같습니다.
--> aceeptance
+-> [Accept interfaces, return structs](https://bryanftan.medium.com/accept-interfaces-return-structs-in-go-d4cab29a301b)에 대한 개념을 말하는 것처럼 느껴졌습니다.
 
 ```go
 package producer  // producer.go
