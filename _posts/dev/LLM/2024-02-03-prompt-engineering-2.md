@@ -41,9 +41,9 @@ tags:
 
 해당 아티클에서는 의학과 관련된 LLM 개발에 대해서 파인 튜닝을 진행한 모델보다 프롬프트 엔지니어링을 잘 도입해서 사용해서 더 좋은 결과를 만들었다는 내용입니다.
 
-![medi-llm-1](./%E1%84%8B%E1%85%B4%E1%84%85%E1%85%ADLLM%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%86%B7%E1%84%91%E1%85%B3%E1%84%90%E1%85%B3%E1%84%8B%E1%85%A6%E1%86%AB%E1%84%8C%E1%85%B5%E1%84%82%E1%85%B5%E1%84%8B%E1%85%A5%E1%84%85%E1%85%B5%E1%86%BC1.png)
+![medi-llm-1](/assets/images/2024-02-03-prompt-engineering-2/%E1%84%8B%E1%85%B4%E1%84%85%E1%85%ADLLM%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%86%B7%E1%84%91%E1%85%B3%E1%84%90%E1%85%B3%E1%84%8B%E1%85%A6%E1%86%AB%E1%84%8C%E1%85%B5%E1%84%82%E1%85%B5%E1%84%8B%E1%85%A5%E1%84%85%E1%85%B5%E1%86%BC1.png)
 
-![medi-llm-2](%E1%84%8B%E1%85%B4%E1%84%85%E1%85%ADLLM%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%86%B7%E1%84%91%E1%85%B3%E1%84%90%E1%85%B3%E1%84%8B%E1%85%A6%E1%86%AB%E1%84%8C%E1%85%B5%E1%84%82%E1%85%B5%E1%84%8B%E1%85%A5%E1%84%85%E1%85%B5%E1%86%BC2.png)
+![medi-llm-2](/assets/images/2024-02-03-prompt-engineering-2/%E1%84%8B%E1%85%B4%E1%84%85%E1%85%ADLLM%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%86%B7%E1%84%91%E1%85%B3%E1%84%90%E1%85%B3%E1%84%8B%E1%85%A6%E1%86%AB%E1%84%8C%E1%85%B5%E1%84%82%E1%85%B5%E1%84%8B%E1%85%A5%E1%84%85%E1%85%B5%E1%86%BC2.png)
 
 # 프롬프트 엔지니어링 기법
 
@@ -75,7 +75,7 @@ tags:
 
 이를 통해 각 모델의 성능을 객관적으로 비교하고, 자신의 요구에 가장 적합한 모델을 선택할 수 있습니다. 
 
-![챗봇 랭킹 사진](ChatBotScore.png)
+![챗봇 랭킹 사진](/assets/images/2024-02-03-prompt-engineering-2/ChatBotScore.png)
 
 ## (1) **Persona**
 
@@ -98,11 +98,11 @@ Persona는 가면이라는 뜻으로 프롬프트 엔지니어링에서 `Persona
 헬스케어 스타트업 ceo: 저희 회사는 건강식품에 대한 혁신을 꿈꾸고 있습니다.
 ```
 
-![no-persona](1-NoPersona.png)
+![no-persona](/assets/images/2024-02-03-prompt-engineering-2/1-NoPersona.png)
 
-![persona](1-Persona.png)
+![persona](/assets/images/2024-02-03-prompt-engineering-2/1-Persona.png)
 
-![multi-persona](1-MultiPersona.png)
+![multi-persona](/assets/images/2024-02-03-prompt-engineering-2/1-MultiPersona.png)
 
 ## (2) **Few-shot Prompting**
 
@@ -133,7 +133,7 @@ Persona는 가면이라는 뜻으로 프롬프트 엔지니어링에서 `Persona
 긍정적
 ```
 
-![Few shot](2-FewShot.png)
+![Few shot](/assets/images/2024-02-03-prompt-engineering-2/2-FewShot.png)
 
 
 ## (3) **Chain-of-Thought Prompting (CoT)**
@@ -161,7 +161,7 @@ Persona는 가면이라는 뜻으로 프롬프트 엔지니어링에서 `Persona
 따라서 47개의 수박을 더 넣어야 합니다.
 ```
 
-![CoT](3-CoT.png)
+![CoT](/assets/images/2024-02-03-prompt-engineering-2/3-CoT.png)
 
 - Zero-shot CoT
 
@@ -169,7 +169,7 @@ Persona는 가면이라는 뜻으로 프롬프트 엔지니어링에서 `Persona
 
 많은 경우 잘되지 않지만 마법의 단어인 `Let's think step by step`을 넣으면 되는 경우가 많습니다.
 
-![Zero-shot CoT](3-ZeroShotCoT.png)
+![Zero-shot CoT](/assets/images/2024-02-03-prompt-engineering-2/3-ZeroShotCoT.png)
 
 
 ## (4) **명시적으로 입력하기**
@@ -192,7 +192,7 @@ Persona는 가면이라는 뜻으로 프롬프트 엔지니어링에서 `Persona
 ...
 ```
 
-![4-명화하게](4-%E1%84%86%E1%85%A7%E1%86%BC%E1%84%92%E1%85%AA%E1%86%A8%E1%84%92%E1%85%A1%E1%84%80%E1%85%A6.png)
+![4-명화하게](/assets/images/2024-02-03-prompt-engineering-2/4-%E1%84%86%E1%85%A7%E1%86%BC%E1%84%92%E1%85%AA%E1%86%A8%E1%84%92%E1%85%A1%E1%84%80%E1%85%A6.png)
 
 ## (추가) 보상에 대한 이야기를 하면 대답을 더 잘해준다?
 
@@ -206,7 +206,7 @@ Persona는 가면이라는 뜻으로 프롬프트 엔지니어링에서 `Persona
 ~~~~. 이것에 대해서 대답을 해주면 팁으로 1000달러를 줄게.
 ```
 
-![with-tip](TIP%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%86%B7%E1%84%91%E1%85%B3%E1%84%90%E1%85%B3%E1%84%8B%E1%85%A6%E1%86%AB%E1%84%8C%E1%85%B5%E1%84%82%E1%85%B5%E1%84%8B%E1%85%A5%E1%84%85%E1%85%B5%E1%86%BC.png)
+![with-tip](/assets/images/2024-02-03-prompt-engineering-2/TIP%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%86%B7%E1%84%91%E1%85%B3%E1%84%90%E1%85%B3%E1%84%8B%E1%85%A6%E1%86%AB%E1%84%8C%E1%85%B5%E1%84%82%E1%85%B5%E1%84%8B%E1%85%A5%E1%84%85%E1%85%B5%E1%86%BC.png)
 
 # 마무리
 
