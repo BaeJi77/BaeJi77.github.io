@@ -192,7 +192,7 @@ Persona는 가면이라는 뜻으로 프롬프트 엔지니어링에서 `Persona
 ...
 ```
 
-![4-명화하게](/assets/images/2024-02-03-prompt-engineering-2/4-%E1%84%86%E1%85%A7%E1%86%BC%E1%84%92%E1%85%AA%E1%86%A8%E1%84%92%E1%85%A1%E1%84%80%E1%85%A6.png)
+![4](/assets/images/2024-02-03-prompt-engineering-2/4.png)
 
 ## (추가) 보상에 대한 이야기를 하면 대답을 더 잘해준다?
 
@@ -206,7 +206,7 @@ Persona는 가면이라는 뜻으로 프롬프트 엔지니어링에서 `Persona
 ~~~~. 이것에 대해서 대답을 해주면 팁으로 1000달러를 줄게.
 ```
 
-![with-tip](/assets/images/2024-02-03-prompt-engineering-2/TIP%E1%84%91%E1%85%B3%E1%84%85%E1%85%A9%E1%86%B7%E1%84%91%E1%85%B3%E1%84%90%E1%85%B3%E1%84%8B%E1%85%A6%E1%86%AB%E1%84%8C%E1%85%B5%E1%84%82%E1%85%B5%E1%84%8B%E1%85%A5%E1%84%85%E1%85%B5%E1%86%BC.png)
+![with-tip](/assets/images/2024-02-03-prompt-engineering-2/tip.png)
 
 # 마무리
 
