@@ -11,6 +11,8 @@ tags:
   - Langchain
 ---
 
+해당 아티클에 존재하는 코드를 보고 싶으시다면 [해당 주소](https://github.com/BaeJi77/langchain-with-RAG)에서 보실 수 있습니다.
+
 # 이전 글
 
 - [1편: langchain과 RAG에 대한 소개](https://baeji77.github.io/llm/langchin/langchain-with-RAG-1/)
@@ -251,7 +253,7 @@ print(response["answer"])
 
 ## 전체 코드
 
-전체 코드는 해당 주소에 남겨두겠습니다. 잘 모르는 영역이기도하며 급하게 만들어서 코드가 좋다고 할 수 없지만 좋은 참고자료가 되기를 바라겠습니다.
+전체 코드는 [해당 주소](https://github.com/BaeJi77/langchain-with-RAG)에 남겨두겠습니다. 잘 모르는 영역이기도하며 급하게 만들어서 코드가 좋다고 할 수 없지만 좋은 참고자료가 되기를 바라겠습니다.
 
 # 마무리
 
