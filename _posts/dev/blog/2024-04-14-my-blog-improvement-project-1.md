@@ -141,3 +141,5 @@ Naver search advisor는 저도 이번에 처음 등록을 해봤습니다. 그�
 
 # reference
 
+- https://wormwlrm.github.io/2023/05/07/SEO-for-Technical-Blog.html
+- https://developers.google.com/search/docs/fundamentals/seo-starter-guide?hl=ko
