@@ -9,4 +9,5 @@ group :jekyll_plugins do
     gem "jekyll-feed"
     gem "jekyll-include-cache"
     gem "jekyll-archives"
+    gem 'jekyll-seo-tag'
 end
