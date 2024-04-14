@@ -135,4 +135,6 @@ Naver search advisor는 저도 이번에 처음 등록을 해봤습니다. 그�
 3. sitemap을 등록합니다. ![](/assets/images/2024-04-14-my-seo-improvement-project-1/naver-sitemap.png)
 4. robots.txt를 등록합니다. ![](/assets/images/2024-04-14-my-seo-improvement-project-1/naver-robots.png)
 
+# 마무리
 
+오늘은 지금 현재 할 수 있는 가장 쉽고 간단한 방법들을 통해서 SEO을 향상시키는 작업들을 해봤습니다. 단순히 글을 쓰고 나만을 위한 글일수도 있자만 그럼에도 내가 잘쓸 글들을 홍보하고 싶은 생각이 있을 경우 한번씩 이런 작업을 진행해보는 것도 너무 좋을것 같습니다.
