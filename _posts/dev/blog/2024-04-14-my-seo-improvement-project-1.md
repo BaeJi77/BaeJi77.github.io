@@ -24,7 +24,7 @@ tags:
 
 # SEO란
 
-![seo 정의 위키]()
+![seo 정의 위키](/assets/images/2024-04-14-my-seo-improvement-project-1/seo정의.png)
 
 SEO란 `Search Engine Optimization`라는 뜻이며 간단하게 말하면 검색 엔진에 어떻게 더 잘 선택받을 수 있는지에 대한 것입니다. 다른 검색엔진도 있겠지만 가장 많이 사용되는 검색 엔진이 구글에서 검색이 잘되는 방법에 대한 이야기를 하는것입니다.
 
@@ -40,7 +40,7 @@ On-Page, Techincal, Off-page 이렇게 3가지 접근 방법이 있다고 합니
 
 간단하게 좋은 글을 쓰면 좋은 SEO 전략이 될 수 있습니다. 그 기준은 여러가지 내용들이 있겠지만 구글 공식에 존재하는 내용을 가져와보겠습니다. 
 
-![구글 seo 컨텐츠 관련]()
+![구글 seo 컨텐츠 관련](/assets/images/2024-04-14-my-seo-improvement-project-1/seo-google-context.png)
 
 - 태그 이용
 
@@ -70,9 +70,9 @@ html에는 여러 태그들을 이용해서 해당 사이트 혹은 해당 링�
 
 SEO는 검색 엔진이 나의 글을 더 위에 보여줄 수 있도록 하는 최적화 과정입니다. 내가 좋은 글을 쓰는것도 매우 중요하지만 그것을 다양한 방법으로 그리고 간단한 설정들로도 충분히 좋은 SEO를 만들 수 있다는 것을 알게되었습니다.
 
-그러면 지금부터는 내가 할 수 있는 간단한 SEO 설정들에 대해서 알아보겠습니다.
-
 # 간단하게 SEO를 향상 시킬 수 있는 방법들
+
+그러면 지금부터는 내가 할 수 있는 간단한 SEO 설정들에 대해서 알아보겠습니다.
 
 - 실습 환경
 
@@ -111,14 +111,28 @@ Jekyll SEO Tag adds the following meta tags to your site:
 ## Google Search Console
 
 1. [google search console](https://search.google.com/search-console/about)에 들어가게 되면 도메인을 등록하는 방법이 있습니다.
-2. github blog를 사용하고 있는 경우 해당 [링크](https://docs.github.com/ko/enterprise-cloud@latest/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages)를 확인하고 알려주는대로 진행하면 됩니다. dns가 업데이트되는데 시간이 걸릴 수도 있습니다.
-3. 제대로 search console에 등록이 완료되었다면 sitemap을 추가하시면 됩니다. ![sitemap 등록]()
-4. 설정에 들어가서 `robots.txt`를 등록합니다. ![robots.txt 등록]()
+2. 새롭게 도메인을 등록하는 경우 github에 등록하는 방법이 있는것 같습니다. github blog를 사용하고 있는 경우 해당 [링크](https://docs.github.com/ko/enterprise-cloud@latest/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages)를 확인하고 알려주는대로 진행하면 됩니다. dns가 업데이트되는데 시간이 걸릴 수도 있습니다.
+
+![](/assets/images/2024-04-14-my-seo-improvement-project-1/google-dns-소유.png)
+
+1. 제대로 search console에 등록이 완료되었다면 sitemap을 추가하시면 됩니다. ![sitemap 등록](/assets/images/2024-04-14-my-seo-improvement-project-1/google-sitemap.png)
+2. 설정에 들어가서 `robots.txt`를 등록합니다. ![robots.txt 등록](/assets/images/2024-04-14-my-seo-improvement-project-1/google-robots.png)
 
 추가적으로 원한다면 [google analytics](https://analytics.google.com/analytics)에 등록도 할 수 있습니다. 등록하게 되면 조금 더 구체적인 유저 접근 및 유저 접근 시간 또한 구체적으로 알수도 있습니다.
 
+그리고 만약 google에서 색인이 되었는지 확인할 수 있고 만약 되어있지 않다면 색인 신청을 할수도 있습니다.
+
+![](/assets/images/2024-04-14-my-seo-improvement-project-1/google-index.png)
+
 ## Naver search advisor
 
+Naver search advisor는 저도 이번에 처음 등록을 해봤습니다. 그림처럼 차근차근 진행하다보면 금방 적용할 수 있을것 같습니다.
 
+1. [Naver search advisor](https://searchadvisor.naver.com/)에 접속합니다.
+2. 사이트 소유 검증을 합니다. 
+  - ![](/assets/images/2024-04-14-my-seo-improvement-project-1/naver-site소유.png)
+  - ![](/assets/images/2024-04-14-my-seo-improvement-project-1/naver-인증.png)
+3. sitemap을 등록합니다. ![](/assets/images/2024-04-14-my-seo-improvement-project-1/naver-sitemap.png)
+4. robots.txt를 등록합니다. ![](/assets/images/2024-04-14-my-seo-improvement-project-1/naver-robots.png)
 
 
