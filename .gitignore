@@ -1,6 +1,5 @@
 /docs
 
-
 # Vim
 *~
 *.sw[p_]
@@ -30,3 +29,6 @@ codekit-config.json
 .sass-cache
 _asset_bundler_cache
 _site
+
+.idea
+Writerside
