@@ -54,7 +54,7 @@ OpAMP의 핵심 기능은 다음과 같습니다:
 - **Agent heartbeat**: agent는 주기적으로 heartbeat를 서버에 전송하여 자신의 가용성을 알립니다.
 - **다운로드 가능한 agent 전용 패키지 관리**: 서버는 agent에 설치할 패키지를 제공할 수 있으며, agent는 이를 자동으로 다운로드하고 설치할 수 있습니다.
 - **보안 자동 업데이트 기능**: agent는 서버로부터 제공받은 패키지를 통해 자동으로 업그레이드 또는 다운그레이드할 수 있습니다.
-- **연결 자격 증명 관리**: client 측 TLS 인증서의 취소 및 회전을 포함한 연결 자격 증명을 관리합니다.
+- **Connection credentials 관리**: client 측 TLS 인증서의 취소 및 rotation을 포함한 connection credentials을 관리합니다.
 
 # Spec
 
