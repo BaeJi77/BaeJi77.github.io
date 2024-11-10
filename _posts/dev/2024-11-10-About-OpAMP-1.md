@@ -1,5 +1,5 @@
 ---
-title: "About OTEL OpAMP (1)"
+title: "대규모 Agent를 어떻게 관리하면 좋을까요? (feat. OpAMP) (1)"
 description: "서버에서 관리되는 agent를 관리하는 OTEL에서 만드는 프로토콜에 대한 이야기"
 categories:
   - dev
