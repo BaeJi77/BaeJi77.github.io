@@ -235,3 +235,13 @@ message ServerToAgentCommand {
 OpAMP는 대규모 agent 관리에 필수적인 다양한 기능을 제공하며, 이를 통해 효율적인 원격 관리가 가능합니다. 이번 글에서는 OpAMP가 나온 배경과 실제로 어떤 식으로 서로 통신하는지에 대해서 이야기했습니다.
 
 다음 글에서는 OpAMP에서 실제로 해당 데이터들을 가지고 어떤 식으로 상호작용하는지 그리고 보안 측면에 대해 더 깊이 탐구하겠습니다.
+
+# ref
+
+- [opamp-spec](https://github.com/open-telemetry/opamp-spec/blob/main/specification.md)
+- [OpAMP Specification github](https://github.com/open-telemetry/opamp-spec?tab=readme-ov-file)
+- [opamp supervisor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/cmd/opampsupervisor/specification/README.md)
+- [opampsupervisor in otel-collector-cotribe](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/opampsupervisor)
+- [opamp extention](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/opampextension)
+- [otel management document](https://opentelemetry.io/docs/collector/management/)
+- [opamp-go](https://github.com/open-telemetry/opamp-go)
