@@ -10,6 +10,11 @@ tags:
   - observability
 ---
 
+# 이전 시리즈
+
+- (현재 글) [대규모 Agent를 어떻게 관리하면 좋을까요? (feat. OpAMP) (1): OpAMP가 나온 배경과 Spec](https://baeji77.github.io/dev/observability/About-OpAMP-1/)
+- [대규모 Agent를 어떻게 관리하면 좋을까요? (feat. OpAMP) (2): OpAMP가 Agent를 처리하는 과정](https://baeji77.github.io/dev/observability/About-OpAMP-2/)
+
 # 개요
 
 OpenTelemetry(소위 otel)의 `Open Agent Management Protocol(OpAMP)`은 대규모 agent 관리의 필요성을 충족시키기 위해 개발된 프로토콜입니다. 이 글에서는 OpAMP의 배경과 서버와의 연결 및 데이터 통신 포맷에 대해서 설명하려고 합니다. 
