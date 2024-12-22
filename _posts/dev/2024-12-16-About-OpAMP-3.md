@@ -23,7 +23,7 @@ tags:
 
 # 개요
 
-이번 글에서는 OpAMP(Open Agent Management Protocol)를 활용하여 서버와 클라이언트 간의 데이터 교환 및 처리 과정을 중점적으로 다룹니다. 특히 다음 네 가지 주요 영역에 초점을 맞춥니다:
+이번 글에서는 `OpAMP(Open Agent Management Protocol)`를 활용하여 서버와 클라이언트 간의 데이터 교환 및 처리 과정을 중점적으로 다룹니다. 특히 다음 네 가지 주요 영역에 초점을 맞춥니다:
 
 - **Configuration**: 원격 설정을 통해 Agent의 설정을 관리하는 방법
 - **Package Management**: 패키지 설치 및 관리 절차
@@ -42,7 +42,7 @@ tags:
 
 # 이전 글 요약
 
-OpAMP에서 Client와 Server와 서로 status를 통신할때 최대한 압축해서 통신합니다. 가장 최신화된 정보만을 교환하면 그 중에서 통신이 제대로 되지 않았다면 모든 정보를 교환하는 방어장치도 존재합니다.
+`OpAMP`에서 Client와 Server와 서로 status를 통신할때 가장 최신화된 정보만을 교환하며 데이터를 압축해서 통신합니다. 가장 최신화된 정보만을 교환하면 그 중에서 통신이 제대로 되지 않았다면 모든 정보를 교환하는 방어장치도 존재합니다.
 
 OpAMP에 대해서 지원하는 서버만을 위한 것이 아닌 OTLP 혹은 다른 서버들에 대한 connection setting을 동적으로 관리하는 방법이 존재합니다.
 
@@ -50,9 +50,9 @@ OpAMP Client가 자체적으로 문제에 대해서 OTLP 기반으로 서버로 
 
 # 용어 정리
 
-- Server: OpAMP Server이며, OpAMP를 통해서 OpAMP client와 통신하여서 Agent에 대한 관리를 도와준다.
-- Client: OpAMP Client이며, OpAMP 서버와 통신하며 Agent에 대한 같은 host에서 직접적인 관리 및 실행을 담당한다.
-- Agent: host에서 실행되는 process이며 otel에서 사용되는 가장 대표적인 예는 otel collector가 있다. 문서에서 Agent는 OpAMP Client + Agent 개념으로 사용하기도 합니다.
+- **Server**: OpAMP Server이며, OpAMP를 통해서 OpAMP client와 통신하여서 Agent에 대한 관리를 도와준다.
+- **Client**: OpAMP Client이며, OpAMP 서버와 통신하며 Agent에 대한 같은 host에서 직접적인 관리 및 실행을 담당한다.
+- **Agent**: host에서 실행되는 process이며 otel에서 사용되는 가장 대표적인 예는 otel collector가 있다. 문서에서 Agent는 OpAMP Client + Agent 개념으로 사용하기도 합니다.
 
 # Operation
 
@@ -62,10 +62,10 @@ OpAMP를 기반으로 서로 교환하는 메시지들을 통해서 Server와 Cl
 
 해당 기능을 통해서 Server에서 Agent에 대한 configuration을 전송할 수 있습니다.
 
-- Server는 ServerToAgent 메시지의 remote_config 필드를 설정하여 Agent에 원격 구성을 제공할 수 있습니다.
-- Client는 Agent가 원격 구성을 수락할 수 있는 경우 AgentToServer.capabilities의 AcceptsRemoteConfig 비트를 설정해야 합니다. 
+- Server는 ServerToAgent 메시지의 `remote_config` 필드를 설정하여 Agent에 원격 구성을 제공할 수 있습니다.
+- Client는 Agent가 원격 구성을 수락할 수 있는 경우 `AgentToServer.capabilities`의 `AcceptsRemoteConfig` 비트를 설정해야 합니다. 
 - Agent 입장에서는 remote에서 오는 configuration에 전부를 받을 필요는 없습니다. 그리고 local에서 선언된 configuration도 있기 때문에 remote configuration이 꼭 client 혹은 agent에 전체 configuration은 아닙니다.
-- client는 `effective_config` 필드를 통해서 OpAMP Server에서 실질적으로 적용된 configuration에 대한 정보를 보냅니다. 그 과정에서 AgentToServer.capabilities의 ReportsEffectiveConfig 비트가 설정되어있어야 합니다.
+- client는 `effective_config` 필드를 통해서 OpAMP Server에서 실질적으로 적용된 configuration에 대한 정보를 보냅니다. 그 과정에서 `AgentToServer.capabilities`의 `ReportsEffectiveConfig` 비트가 설정되어있어야 합니다.
 
 밑에는 remote configuration의 적용 시퀀스 다이어그램입니다. 
 
@@ -115,7 +115,7 @@ Config │    Config │  ServerToAgent{AgentRemoteConfig} │   │and     │
                    │                                   │
 ```
 
-해당 procedure 과정에서 중요한 것은 만약 실질적으로 적용된 configuration에 대한 변경이 있는 경우에는 Effective configuration을 Server로 전송합니다. 
+해당 procedure 과정에서 중요한 것은 만약 실질적으로 적용된 configuration에 대한 변경이 있는 경우에는 적용된 configuration을 Server로 전송합니다. 
 
 만약 그렇지 않으면 무한적으로 계속 메시지를 주고 받는 구조가 될 수 있습니다.
 
@@ -143,37 +143,34 @@ message AgentConfigFile {
 
 ## Package (Beta)
 
-OpAMP는 otel collector뿐만 아니라 host에서 설치되고 관리하고 싶은 process에 대해서 관리할 수 있도록 기능을 제공합니다. 그런 목적과 함께 실행하고 싶은 process에 대한 패키지와 그것과 함께 동작하는 addon 패키지에 대해서 관리를 지원합니다.
+`OpAMP`는 otel collector뿐만 아니라 host에서 설치되고 관리하고 싶은 process에 대해서 관리할 수 있도록 기능을 제공합니다. 그런 목적과 함께 실행하고 싶은 process에 대한 패키지와 그것과 함께 동작하는 addon 패키지에 대해서 관리를 지원합니다.
 
-최상위 패키지와 하위 패키지라는 두 가지 유형의 패키지가 존재합니다.
-
-최상위 패키지는 Agent의 주요 기능을 구현한 것이며 일반적으로 하나의 패키지가 존재합니다.
-
-하위 패키지는 addon 혹은 plugin이라고 알려져 있으며 Agent의 추가 기능을 도와줍니다.
+- 최상위 패키지와 하위 패키지라는 두 가지 유형의 패키지가 존재합니다.
+  - 최상위 패키지는 Agent의 주요 기능을 구현한 것이며 일반적으로 하나의 패키지가 존재합니다.
+  - 하위 패키지는 addon 혹은 plugin이라고 알려져 있으며 Agent의 추가 기능을 도와줍니다.
 
 패키지당 하나의 파일만 다운로드 할수 있기 때문에 패키지 안에 zip이나 tar 파일 형식으로 하는것을 추천합니다.
 
-- 서로 통신을 위해서
-  - Server는 ServerToAgent 메시지의 packages_available 필드를 설정해야 됩니다.
-  - Agent가 AcceptsPackages 비트를 설정해야지만 Server가 패키지 정보를 제공합니다.
+- Server는 ServerToAgent 메시지의 `packages_available` 필드를 설정해야 됩니다.
+- Agent가 `AcceptsPackages` 비트를 설정해야지만 Server가 패키지 정보를 제공합니다.
 
 ### Package download
 
 Agent가 PackagesAvailable 메시지를 수신한 후 절차는 밑에와 같습니다.
 
-1. Agent가 보유한 모든 패키지의 해시값과 Server가 제공해주는 all_packages_hash 필드값과 비교합니다.
+1. Agent가 보유한 모든 패키지의 해시값과 Server가 제공해주는 `all_packages_hash` 필드값과 비교합니다.
   - 만약 해당 값이 똑같다면 다운로드 절차가 완료된 것으로 간주합니다. 그렇지 않다면 2단계를 진행합니다.
 2. Server가 제공하는 각 패키지에 대해서 Agent는 어떤 패키지를 다운로드 해야되는지 확인합니다.
   - 해당 패키지 이름이 없는 경우 3단계를 진행합니다.
   - 해당 패키지 이름은 있지만 hash 필드 값이 Server에서 제공해준 것과 다르다면 3단계를 진행합니다.
   - Agent가 보유하고 있지만 Server에서 제공하지 않는 패키지는 Agent에서 삭제합니다.
 3. Server에서 제공한 패키지 정보를 기반으로 다운로드 할지 결정합니다.
-  - download_url 필드에 지정된 위치에서 파일을 다운로드 합니다.
-  - download_url는 HTTP Get 메시지를 통해서 다운로드 할수 있어야 되며 headers 필드에서 제공하는 값들을 함께 보내서 권한 문제를 해결할수도 있어야 됩니다.
+  - `download_url` 필드에 지정된 위치에서 파일을 다운로드 합니다.
+  - `download_url`는 HTTP Get 메시지를 통해서 다운로드 할수 있어야 되며 `headers` 필드에서 제공하는 값들을 함께 보내서 권한 문제를 해결할수도 있어야 됩니다.
 
 ### Agent status report
 
-Client는 `AgentToServer` 메시지에 package_statuses 필드에 값을 넣어서 Server에 전송합니다.
+Client는 `AgentToServer` 메시지에 `package_statuses` 필드에 값을 넣어서 Server에 전송합니다.
 
 모든 패키지에 대한 다운로드 및 설치가 완료되면 (성공 혹은 실패)에 대해서 Server에 보고합니다.
 
@@ -267,15 +264,15 @@ message DownloadableFile {
 
 ### motivation
 
-OpAMP 프로토콜은 Agent의 원격 관리 및 구성의 모든 측면을 다루도록 설계되었습니다. OpAMP 프로토콜의 범위에 포함되지 않거나 다른 Agent 유형에 일반화할 수 없는 특정 Agent에 매우 특화된 경우에는 지원되지 않을 것입니다. Server와 Agent 간에 다른 연결을 열거나 완전히 새로운 프로토콜을 정의하지 않고도 사용자 정의 동작을 구현할 수 있도록 합니다
+OpAMP 프로토콜은 Agent의 원격 관리 및 구성의 모든 측면을 다루도록 설계되었습니다. OpAMP 프로토콜의 범위에 포함되지 않거나 다른 Agent 유형에 일반화할 수 없는 특정 Agent에 매우 특화된 경우에는 지원되지 않을 것입니다. Server와 Agent 간에 다른 연결을 열거나 완전히 새로운 프로토콜을 정의하지 않고도 사용자 정의 동작을 구현할 수 있도록 합니다.
 
 ### CustomCapabilities message
 
-Agent와 Server 모두 해당 메시지를 통해서 Custom message를 교환합니다. ServerToAgent 및 AgentToServer에서 지원됩니다.
+Agent와 Server 모두 해당 메시지를 통해서 Custom message를 교환합니다. `ServerToAgent` 및 `AgentToServer`에서 지원됩니다.
 
-기능은 역방향 FQDN과 선택적 버전 정보로 식별되어야 합니다. 예를 들어 "com.company.capability/v2"는 "company.com"에서 만든 "capability"의 버전 2를 식별합니다.
+기능은 역방향 FQDN과 선택적 버전 정보로 식별되어야 합니다. 예를 들어 `"com.company.capability/v2"`는 `"company.com"`에서 만든 `"capability"의 버전 2`를 식별합니다.
 
-지원되지 않는 기능이 있는 CustomMessage를 수신한 경우 메시지를 무시할 수 있습니다.
+지원되지 않는 기능이 있는 `CustomMessage`를 수신한 경우 메시지를 무시할 수 있습니다.
 
 ```protobuf
 message CustomCapabilities {
@@ -345,7 +342,7 @@ CustomMessage {
 
 - resume 를 통한 Agent 실행 재개
 
-밑에와 같이 `resume` 유형의 CustomMessage를 포함여서 전송합니다.
+밑에와 같이 `resume` 유형의 `CustomMessage`를 포함여서 전송합니다.
 
 ```
 CustomMessage {
@@ -378,7 +375,7 @@ Client는 `agent_disconnect` 필드가 설정된 `AgentToServer` 메시지를 �
 
 ### Plain HTTP
 
-HTTP 응답이 완료된 후 Client 연결이 사라진 것으로 항상 암시되므로 Client가 agent_disconnect 필드가 설정된 AgentToServer 메시지를 보낼 필요는 없습니다.
+HTTP 응답이 완료된 후 Client 연결이 사라진 것으로 항상 암시되므로 Client가 `agent_disconnect` 필드가 설정된 AgentToServer 메시지를 보낼 필요는 없습니다.
 
 Server에서는 지속적으로 HTTP 요청을 오는 Clent와 특정 기간동안 HTTP 요청이 오지 않는 Client에 대한 비지니스를 다르게 사용할수도 있습니다.
 
@@ -388,25 +385,25 @@ Server에서는 지속적으로 HTTP 요청을 오는 Clent와 특정 기간동�
 
 ## 중복 WebSocket 연결
 
-Server는 동일한 Client 인스턴스가 두 개 이상의 동시 연결을 가지고 있거나 여러 Agent 인스턴스가 동일한 instance_uid를 사용하는 경우 요청을 연결 해제하거나 제공하지 않을 수 있습니다.
+Server는 동일한 Client 인스턴스가 두 개 이상의 동시 연결을 가지고 있거나 여러 Agent 인스턴스가 동일한 `instance_uid`를 사용하는 경우 요청을 연결 해제하거나 제공하지 않을 수 있습니다.
 
-Server는 중복 instance_uid를 감지해야 합니다(예: Agent가 잘못된 UID 생성기를 사용하거나 Agent가 실행되는 VM을 복제한 경우 발생할 수 있음). 중복 instance_uid가 감지되면 Server는 새 instance_uid를 생성하고 이를 AgentIdentification의 new_instance_uid 값으로 보냅니다.
+Server는 중복 `instance_uid`를 감지해야 합니다(예: Agent가 잘못된 UID 생성기를 사용하거나 Agent가 실행되는 VM을 복제한 경우 발생할 수 있음). 중복 `instance_uid`가 감지되면 Server는 새 `instance_uid`를 생성하고 이를 `AgentIdentification`의 `new_instance_uid` 값으로 보냅니다.
 
 ## Authentication (Beta)
 
-Client와 Server는 HTTP에서 지원하는 인증 방법을 사용할 수 있으며, basic 인증 또는 Bearer 인증과 같은 방법이 있습니다.
+Client와 Server는 HTTP에서 지원하는 인증 방법을 사용할 수 있으며, `basic 인증` 또는 `Bearer 인증`과 같은 방법이 있습니다.
 
 Client 인증이 실패한 경우 Server는 401 Unauthorized로 응답해야 합니다.
 
 ## bad request
 
-Server가 잘못된 형식의 AgentToServer 메시지를 수신한 경우 Server는 error_response가 적절히 설정된 ServerToAgent 메시지로 응답해야 합니다.
+Server가 잘못된 형식의 `AgentToServer` 메시지를 수신한 경우 Server는 `error_response`가 적절히 설정된 `ServerToAgent` 메시지로 응답해야 합니다.
 
-Client는 BAD_REQUEST 응답을 수신한 AgentToServer 메시지를 **다시 보내지 않아야 합니다.**
+Client는 `BAD_REQUEST` 응답을 수신한 `AgentToServer` 메시지를 **다시 보내지 않아야 합니다.**
 
 ## 메시지 재시도
 
-Client는 다음과 같은 경우 AgentToServer 메시지를 다시 보낼 수 있습니다:
+Client는 다음과 같은 경우 `AgentToServer` 메시지를 다시 보낼 수 있습니다:
 
 - 응답이 필요한 AgentToServer 메시지를 전송했지만 합리적인 시간 내에 응답이 오지 않은 경우. (timeout 설정 가능)
 - 응답이 필요한 AgentToServer 메시지가 전송되었지만 응답을 받기 전에 연결이 끊어진 경우.
@@ -422,7 +419,7 @@ Server 또한 Client 혹은 Agent에 전달하고자 하는 최신 메시지만 
 
 ### WebSocket
 
-Server가 AgentToServer 메시지를 처리하지 못하는 경우 Server는  error_response가 type 필드가 UNAVAILABLE로 설정된 ServerToAgent 메시지로 응답해야 합니다. Client는 연결을 끊고 대기한 후 다시 연결을 재개해야 합니다.
+Server가 AgentToServer 메시지를 처리하지 못하는 경우 Server는  `error_response`가 type 필드가 `UNAVAILABLE로` 설정된 `ServerToAgent` 메시지로 응답해야 합니다. Client는 연결을 끊고 대기한 후 다시 연결을 재개해야 합니다.
 
 `retry_after_nanoseconds`는 Client가 다시 연결하기 전에 대기해야하는 시간을 지정합니다.
 
@@ -432,15 +429,15 @@ message RetryInfo {
 }
 ```
 
-retry_info가 설정되지 않은 경우 Client는 재시도 간격을 점진적으로 증가시키기 위해 지수 백오프 전략을 구현해야 합니다.
+`retry_info`가 설정되지 않은 경우 Client는 재시도 간격을 점진적으로 증가시키기 위해 지수 백오프 전략을 구현해야 합니다.
 
 ### Plain HTTP
 
-Server는 HTTP 503 Service Unavailable 또는 HTTP 429 Too Many Requests 응답을 반환할 수 있으며, Retry-After 헤더를 설정하여 Client가 다시 연결을 시도해야 하는 시점을 나타낼 수 있습니다.
+Server는 `HTTP 503 Service Unavailable` 또는 `HTTP 429 Too Many Requests` 응답을 반환할 수 있으며, `Retry-After` 헤더를 설정하여 Client가 다시 연결을 시도해야 하는 시점을 나타낼 수 있습니다.
 
 Agent가 다시 연결하는 동안 클라이언트는 정기적인 하트비트 메시지를 보내지 않아야 합니다.
 
-최소 권장 재시도 간격은 30초입니다.
+**최소 권장 재시도 간격은 30초**입니다.
 
 # Security
 
@@ -482,7 +479,7 @@ Agent가 실행할 수 있는 실행 파일에 대한 Agent 측 제한을 두는
 
 OpAMP는 Agent와 Server에 대한 여러 기능을 정의합니다. 이러한 기능의 대부분은 선택 사항입니다. Agent 또는 Server는 피어가 특정 기능을 지원하지 않을 수 있음을 준비해야 합니다.
 
-Agent와 Server는 초기 메시지 교환 중에 지원하는 기능을 나타냅니다. Client는 AgentToServer 메시지에서 기능 비트 필드를 설정하고, Server는 ServerToAgent 메시지에서 기능 비트 필드를 설정합니다.
+Agent와 Server는 초기 메시지 교환 중에 지원하는 기능을 나타냅니다. Client는 `AgentToServer` 메시지에서 기능 비트 필드를 설정하고, Server는 `ServerToAgent` 메시지에서 기능 비트 필드를 설정합니다.
 
 Server는 특정 Agent의 기능을 알게 된 후 Agent가 지원하지 않는 기능을 사용하는 것을 중지해야 합니다.
 
@@ -496,7 +493,7 @@ Server는 특정 Agent의 기능을 알게 된 후 Agent가 지원하지 않는 
 
 ### 무시할 수 없는 기능 확장
 
-AgentToServer 및 ServerToAgent 메시지의 기능 필드는 예약된 비트 수를 포함합니다.
+`AgentToServer` 및 `ServerToAgent` 메시지의 기능 필드는 예약된 비트 수를 포함합니다.
 
 Client와 Server는 메시지를 보낼 때 이러한 예약된 비트를 0으로 설정해야 합니다. 이를 통해 OpAMP의 최신 버전을 구현하는 수신자는 발신자가 새로운 기능을 지원하지 않음을 알 수 있으며, 이에 따라 동작을 조정할 수 있습니다.
 
