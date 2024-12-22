@@ -23,26 +23,22 @@ tags:
 
 # 개요
 
-이번 글은 OpAMP(Open Agent Management Protocol)를 활용하여 실제로 OpAMP를 통해서 서버와 클라이언트 간에 어떻게 데이터를 교환하고 그것들을 활용해서 처리하는 과정을 중점적으로 다루겠습니다.
+이번 글에서는 OpAMP(Open Agent Management Protocol)를 활용하여 서버와 클라이언트 간의 데이터 교환 및 처리 과정을 중점적으로 다룹니다. 특히 다음 네 가지 주요 영역에 초점을 맞춥니다:
 
-- configuration
-- package
-- connection management
-- security
+- **Configuration**: 원격 설정을 통해 Agent의 설정을 관리하는 방법
+- **Package Management**: 패키지 설치 및 관리 절차
+- **Connection Management**: 클라이언트와 서버 간의 연결 설정 및 유지
+- **Security**: 보안 고려 사항 및 권장 사항
 
-위에 4가지에 대해서 중점적으로 다룰 예정입니다.
+이 글은 OpAMP의 실질적인 적용 사례를 통해 대규모 Agent 관리의 복잡성을 해소하는 방법을 제시할 것입니다.
 
 ## TL;DR
 
-remote configuration을 통해서 원격으로 서버에서 Agent에 설정을 할 수 있습니다. 그 과정에서 무한루프를 방지하며 보안적인 부분을 고려해야 됩니다.
-
-설정을 통해서 Agent 동작을 위한 패키지를 설치할 수 있습니다. 해시 기반으로 특정 패키지에 변경 및 부재에 대해서 비교한 이후에 다운로드 하는 동작을 진행합니다. 보안적인 부분을 고려해야될 필요가 있습니다.
-
-Client와 Server와의 connection 연결 및 닫기 뿐만 아니라 장애 상황 및 Client의 잘못된 요청에 대해서 처리할 수 있는 절차가 존재합니다. 특히 retry 시에 Server의 부하를 막기 위해서 backoff 전략이 필요합니다.
-
-악의적인 Server에 의해서 host에 보안적인 문제가 발생할 수 있습니다. 그런 문제를 막기 위해서 권한을 최소한으로 처리하며 Client에서만 처리하는 configuration 및 Server에서 오는 요청에 대해서 보수적으로 접근할 필요가 있습니다.
-
-OpAMP는 프로토콜이며 추후 발전될 가능성이 높습니다. Server와 Client는 최대한 무시할 수 있는 기능과 무시할 수 없는 기능에 대해서 고려하여서 가능한 기능에 대해서 서로 정보를 교환해야 합니다.
+- **Remote Configuration**: 서버에서 Agent로 설정을 원격으로 전송할 수 있으며, 이 과정에서 무한 루프를 방지하고 보안을 고려해야 합니다.
+- **Package Management**: 해시 기반으로 패키지의 변경 여부를 확인하고 필요한 경우 다운로드합니다. 보안이 중요한 요소입니다.
+- **Connection Management**: 클라이언트와 서버 간의 연결 및 장애 상황 처리 절차가 포함됩니다. 특히, 재시도 시 서버 부하를 줄이기 위한 백오프 전략이 필요합니다.
+- **Security**: 악의적인 서버로부터의 보안 위협을 최소화하기 위해 권한을 최소화하고, Client 측에서 configuration에 대해서 최대한 보수적으로 접근해야 합니다.
+- OpAMP는 지속적으로 발전하는 프로토콜로, 새로운 추가되는 기능에 대해서 고려하여서 설정해야됩니다.
 
 # 이전 글 요약
 
@@ -64,15 +60,12 @@ OpAMP를 기반으로 서로 교환하는 메시지들을 통해서 Server와 Cl
 
 ## Configuration
 
-해당 기능은 Optional이며 통신 간에 해당 option을 끄게 되면 사용하지 않을수 있습니다.
+해당 기능을 통해서 Server에서 Agent에 대한 configuration을 전송할 수 있습니다.
 
-Server는 ServerToAgent 메시지의 remote_config 필드를 설정하여 Agent에 원격 구성을 제공할 수 있습니다.
-
-OpAMP Client는 Agent가 원격 구성을 수락할 수 있는 경우 AgentToServer.capabilities의 AcceptsRemoteConfig 비트를 설정해야 합니다. 
-
-Agent 입장에서는 remote에서 오는 configuration에 전부를 받을 필요는 없습니다. 그리고 local에서 선언된 configuration도 있기 때문에 remote configuration이 꼭 client 혹은 agent에 전체 configuration은 아닙니다.
-
-그래서 client는 `effective_config` 필드를 통해서 OpAMP Server에서 실질적으로 적용된 configuration에 대한 정보를 보냅니다. 그 과정에서 AgentToServer.capabilities의 ReportsEffectiveConfig 비트가 설정되어있어야 합니다.
+- Server는 ServerToAgent 메시지의 remote_config 필드를 설정하여 Agent에 원격 구성을 제공할 수 있습니다.
+- Client는 Agent가 원격 구성을 수락할 수 있는 경우 AgentToServer.capabilities의 AcceptsRemoteConfig 비트를 설정해야 합니다. 
+- Agent 입장에서는 remote에서 오는 configuration에 전부를 받을 필요는 없습니다. 그리고 local에서 선언된 configuration도 있기 때문에 remote configuration이 꼭 client 혹은 agent에 전체 configuration은 아닙니다.
+- client는 `effective_config` 필드를 통해서 OpAMP Server에서 실질적으로 적용된 configuration에 대한 정보를 보냅니다. 그 과정에서 AgentToServer.capabilities의 ReportsEffectiveConfig 비트가 설정되어있어야 합니다.
 
 밑에는 remote configuration의 적용 시퀀스 다이어그램입니다. 
 
@@ -147,12 +140,6 @@ message AgentConfigFile {
 `AgentConfigMap` 안에 있는 `config_map`에 key 값은 파일이름입니다. 하나의 configuration file만 있는 경우에는 key는 비어있습니다.
 
 `AgentConfigFile`안에 있는 `content_type`은 body 데이터에 대한 MIME Content-Type입니다. 해당 값은 Server가 UI를 깔끔하게 시각화하는데 사용할 수 있습니다.
-
-### 정리
-
-Agent, Server 모두 remote configuration을 서로 받고 요청할 수 있는지 설정합니다. 그 설정 이후에 Server는 configuration을 전송해주지는 Client은 해당 정보를 받을수도 있고 안받을수도 있습니다.
-
-실질적으로 적용된 configuration에 대해서 Client는 Server에 전송해줍니다. 기억해야될 것은 어떤 변경도 없으면 Server에게 요청하지 않아서 무한 루프를 발생하지 않도록 해야됩니다.
 
 ## Package (Beta)
 
