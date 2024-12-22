@@ -23,7 +23,7 @@ tags:
 
 # 개요
 
-이번 글에서는 `OpAMP(Open Agent Management Protocol)`를 활용하여 서버와 클라이언트 간의 데이터 교환 및 처리 과정을 중점적으로 다룹니다. 특히 다음 네 가지 주요 영역에 초점을 맞춥니다:
+이번 글에서는 `OpAMP(Open Agent Management Protocol)`를 활용하여 서버와 클라이언트 간의 데이터 교환 및 처리 과정을 중점적으로 다룹니다. 특히 다음 네 가지 주요 영역에 초점을 맞췄습니다:
 
 - **Configuration**: 원격 설정을 통해 Agent의 설정을 관리하는 방법
 - **Package Management**: 패키지 설치 및 관리 절차
@@ -69,7 +69,7 @@ OpAMP를 기반으로 서로 교환하는 메시지들을 통해서 Server와 Cl
 
 밑에는 remote configuration의 적용 시퀀스 다이어그램입니다. 
 
-```
+```markdown
      Agent       Client                             Server
 
        │           │ AgentToServer{}                   │   ┌─────────┐
@@ -93,7 +93,7 @@ Config │    Config │ ServerToAgent{AgentRemoteConfig}  │   │ Fetch   │
 
 Client에서 특정한 변경이 없는 경우에도 Server에서 remote configuration에 대한 요청을 전달할 수 있습니다.
 
-```
+```markdown
     Agent      Client                             Server
 
        │           │                                   │
@@ -176,7 +176,7 @@ Client는 `AgentToServer` 메시지에 `package_statuses` 필드에 값을 넣�
 
 밑에는 일반적인 패키지 다운로드 및 status report 시퀀스 다이어그램입니다.
 
-```
+```markdown
     Download        Agent/Client                          OpAMP
      Server                                              Server
        │                 │                                  │
