@@ -25,7 +25,7 @@ tags:
 
 이번 글에서는 `OpAMP(Open Agent Management Protocol)`를 활용하여 서버와 클라이언트 간의 데이터 교환 및 처리 과정을 중점적으로 다룹니다. 특히 다음 네 가지 주요 영역에 초점을 맞췄습니다:
 
-- **Configuration**: 원격 설정을 통해 Agent의 설정을 관리하는 방법
+- **Configuration**: remote configuration을 통해 Agent의 설정을 관리하는 방법
 - **Package Management**: 패키지 설치 및 관리 절차
 - **Connection Management**: 클라이언트와 서버 간의 연결 설정 및 유지
 - **Security**: 보안 고려 사항 및 권장 사항
@@ -62,14 +62,14 @@ OpAMP를 기반으로 서로 교환하는 메시지들을 통해서 Server와 Cl
 
 해당 기능을 통해서 Server에서 Agent에 대한 configuration을 전송할 수 있습니다.
 
-- Server는 ServerToAgent 메시지의 `remote_config` 필드를 설정하여 Agent에 원격 구성을 제공할 수 있습니다.
-- Client는 Agent가 원격 구성을 수락할 수 있는 경우 `AgentToServer.capabilities`의 `AcceptsRemoteConfig` 비트를 설정해야 합니다. 
+- Server는 `ServerToAgent` 메시지의 `remote_config` 필드를 설정하여 Agent에 remote configuration을 제공할 수 있습니다.
+- Client는 Agent가 remote configuration을 수락할 수 있는 경우 `AgentToServer.capabilities`의 `AcceptsRemoteConfig` 비트를 설정해야 합니다. 
 - Agent 입장에서는 remote에서 오는 configuration에 전부를 받을 필요는 없습니다. 그리고 local에서 선언된 configuration도 있기 때문에 remote configuration이 꼭 client 혹은 agent에 전체 configuration은 아닙니다.
 - client는 `effective_config` 필드를 통해서 OpAMP Server에서 실질적으로 적용된 configuration에 대한 정보를 보냅니다. 그 과정에서 `AgentToServer.capabilities`의 `ReportsEffectiveConfig` 비트가 설정되어있어야 합니다.
 
 밑에는 remote configuration의 적용 시퀀스 다이어그램입니다. 
 
-```markdown
+```
      Agent       Client                             Server
 
        │           │ AgentToServer{}                   │   ┌─────────┐
@@ -93,7 +93,7 @@ Config │    Config │ ServerToAgent{AgentRemoteConfig}  │   │ Fetch   │
 
 Client에서 특정한 변경이 없는 경우에도 Server에서 remote configuration에 대한 요청을 전달할 수 있습니다.
 
-```markdown
+```
     Agent      Client                             Server
 
        │           │                                   │
@@ -115,7 +115,7 @@ Config │    Config │  ServerToAgent{AgentRemoteConfig} │   │and     │
                    │                                   │
 ```
 
-해당 procedure 과정에서 중요한 것은 만약 실질적으로 적용된 configuration에 대한 변경이 있는 경우에는 적용된 configuration을 Server로 전송합니다. 
+해당 procedure 과정에서 중요한 것은 실질적으로 적용된 configuration에 대한 변경이 있는 경우에만 적용된 configuration을 Server로 전송합니다. 실질적으로 configuration이 적용된 것이 없다면 Server로 요청을 보내지 않습니다.
 
 만약 그렇지 않으면 무한적으로 계속 메시지를 주고 받는 구조가 될 수 있습니다.
 
@@ -139,7 +139,7 @@ message AgentConfigFile {
 
 `AgentConfigMap` 안에 있는 `config_map`에 key 값은 파일이름입니다. 하나의 configuration file만 있는 경우에는 key는 비어있습니다.
 
-`AgentConfigFile`안에 있는 `content_type`은 body 데이터에 대한 MIME Content-Type입니다. 해당 값은 Server가 UI를 깔끔하게 시각화하는데 사용할 수 있습니다.
+`AgentConfigFile`안에 있는 `content_type`은 body 데이터에 대한 `MIME Content-Type`입니다. 해당 값은 Server가 UI를 깔끔하게 시각화하는데 사용할 수 있습니다.
 
 ## Package (Beta)
 
@@ -176,7 +176,7 @@ Client는 `AgentToServer` 메시지에 `package_statuses` 필드에 값을 넣�
 
 밑에는 일반적인 패키지 다운로드 및 status report 시퀀스 다이어그램입니다.
 
-```markdown
+```
     Download        Agent/Client                          OpAMP
      Server                                              Server
        │                 │                                  │
@@ -214,19 +214,19 @@ file hash, package hash, all package hash 3가지 hash가 존재합니다.
 
 - file hash
 
-DownloadableFile 메시지의 content_hash 필드에 저장. 
+`DownloadableFile` 메시지의 `content_hash` 필드에 저장. 
 
 특정 파일이 Server에서 제공해주는 것과 다른지 비교.
 
 - package hash
 
-PackageAvailable 메시지의 hash 필드에 저장.
+`PackageAvailable` 메시지의 `hash` 필드에 저장.
 
 전체 패키지(패키지 이름 및 파일 콘텐츠)를 식별하는 패키지 해시.
 
 - all package hash
 
-PackagesAvailable 메시지의 all_packages_hash 필드에 저장
+`PackagesAvailable` 메시지의 `all_packages_hash` 필드에 저장
 
 모든 패키지의 집계 해시는 특정 Agent에 대한 모든 패키지의 집계 해시
 
@@ -301,7 +301,7 @@ message CustomMessage {
 
 - Agent 연결
 
-Agent에서 Server와 연결할때 AgentToServer 메시지에 `CustomCapabilities`에 밑에 같이 전송하게 되면 `"io.opentelemetry.pause"` 기능을 제공해준다는 것을 알려주는 것입니다.
+Agent에서 Server와 연결할때 `AgentToServer` 메시지에 `CustomCapabilities`에 밑에 같이 전송하게 되면 `"io.opentelemetry.pause"` 기능을 제공해준다는 것을 알려주는 것입니다.
 
 ```
 CustomCapabilities {
@@ -375,7 +375,7 @@ Client는 `agent_disconnect` 필드가 설정된 `AgentToServer` 메시지를 �
 
 ### Plain HTTP
 
-HTTP 응답이 완료된 후 Client 연결이 사라진 것으로 항상 암시되므로 Client가 `agent_disconnect` 필드가 설정된 AgentToServer 메시지를 보낼 필요는 없습니다.
+HTTP 응답이 완료된 후 Client 연결이 사라진 것으로 항상 암시되므로 Client가 `agent_disconnect` 필드가 설정된 `AgentToServer` 메시지를 보낼 필요는 없습니다.
 
 Server에서는 지속적으로 HTTP 요청을 오는 Clent와 특정 기간동안 HTTP 요청이 오지 않는 Client에 대한 비지니스를 다르게 사용할수도 있습니다.
 
@@ -393,7 +393,7 @@ Server는 중복 `instance_uid`를 감지해야 합니다(예: Agent가 잘못�
 
 Client와 Server는 HTTP에서 지원하는 인증 방법을 사용할 수 있으며, `basic 인증` 또는 `Bearer 인증`과 같은 방법이 있습니다.
 
-Client 인증이 실패한 경우 Server는 401 Unauthorized로 응답해야 합니다.
+Client 인증이 실패한 경우 Server는 **401 Unauthorized**로 응답해야 합니다.
 
 ## bad request
 
@@ -405,9 +405,9 @@ Client는 `BAD_REQUEST` 응답을 수신한 `AgentToServer` 메시지를 **다�
 
 Client는 다음과 같은 경우 `AgentToServer` 메시지를 다시 보낼 수 있습니다:
 
-- 응답이 필요한 AgentToServer 메시지를 전송했지만 합리적인 시간 내에 응답이 오지 않은 경우. (timeout 설정 가능)
-- 응답이 필요한 AgentToServer 메시지가 전송되었지만 응답을 받기 전에 연결이 끊어진 경우.
-- Server로부터 UNAVAILABLE 응답을 받은 후.
+- 응답이 필요한 `AgentToServer` 메시지를 전송했지만 합리적인 시간 내에 응답이 오지 않은 경우. (timeout 설정 가능)
+- 응답이 필요한 `AgentToServer` 메시지가 전송되었지만 응답을 받기 전에 연결이 끊어진 경우.
+- Server로부터 **UNAVAILABLE** 응답을 받은 후.
 
 Server에서는 언제나 Client가 여러번 요청이 올 수 있다는 전제하에 멱등성이 있게 메시지를 수신해야합니다.
 
@@ -419,7 +419,7 @@ Server 또한 Client 혹은 Agent에 전달하고자 하는 최신 메시지만 
 
 ### WebSocket
 
-Server가 AgentToServer 메시지를 처리하지 못하는 경우 Server는  `error_response`가 type 필드가 `UNAVAILABLE로` 설정된 `ServerToAgent` 메시지로 응답해야 합니다. Client는 연결을 끊고 대기한 후 다시 연결을 재개해야 합니다.
+Server가 `AgentToServer` 메시지를 처리하지 못하는 경우 Server는  `error_response`가 type 필드가 **UNAVAILABLE**로 설정된 `ServerToAgent` 메시지로 응답해야 합니다. Client는 연결을 끊고 대기한 후 다시 연결을 재개해야 합니다.
 
 `retry_after_nanoseconds`는 Client가 다시 연결하기 전에 대기해야하는 시간을 지정합니다.
 
@@ -433,7 +433,7 @@ message RetryInfo {
 
 ### Plain HTTP
 
-Server는 `HTTP 503 Service Unavailable` 또는 `HTTP 429 Too Many Requests` 응답을 반환할 수 있으며, `Retry-After` 헤더를 설정하여 Client가 다시 연결을 시도해야 하는 시점을 나타낼 수 있습니다.
+Server는 **HTTP 503 Service Unavailable** 또는 **HTTP 429 Too Many Requests** 응답을 반환할 수 있으며, `Retry-After` 헤더를 설정하여 Client가 다시 연결을 시도해야 하는 시점을 나타낼 수 있습니다.
 
 Agent가 다시 연결하는 동안 클라이언트는 정기적인 하트비트 메시지를 보내지 않아야 합니다.
 
@@ -441,21 +441,21 @@ Agent가 다시 연결하는 동안 클라이언트는 정기적인 하트비트
 
 # Security
 
-remote configuration, remote package download는 상당한 보안 위험을 초래합니다. 악의적인 Server 측 구성을 보내거나 악의적인 패키지를 보내면 Server는 Agent에게 바람직하지 않은 작업을 수행하도록 강제할 수 있습니다.
+`remote configuration`, `remote package download`는 상당한 보안 위험을 초래합니다. 악의적인 Server 측 구성을 보내거나 악의적인 패키지를 보내면 Server는 Agent에게 바람직하지 않은 작업을 수행하도록 강제할 수 있습니다.
 
-이 섹션의 지침은 구현에 선택 사항이지만 민감한 애플리케이션에 대해 강력히 권장됩니다.
+이 섹션의 지침은 구현에 선택 사항이지만 **민감한 애플리케이션에 대해 강력히 권장됩니다**.
 
 ## General Recommendations
 
-Agent는 제로 트러스트 보안 모델을 사용하고 Server로부터 수신한 원격 구성이나 다른 제안을 자동으로 신뢰하지 않는 것이 좋습니다.
+Agent는 **zero-trust security model**을 사용하고 Server로부터 수신한 remote configuration이나 다른 제안을 **자동으로 신뢰하지 않는 것이 좋습니다**.
 
 - Agent는 민감한 파일에 액세스하거나 높은 권한 작업을 수행하지 않도록 최소한의 권한으로 실행해야 합니다. Agent는 루트 사용자로 실행되어서는 안됩니다.
-- Agent가 로컬 데이터를 수집할 수 있는 경우 수집을 특정 디렉토리 세트로 제한해야 합니다. 이 제한은 로컬로 지정되어야 하며 원격 구성을 통해 재정의할 수 없어야 합니다. 만약 그렇지 않다면 Agent는 머신에 민감한 정보에 액세스할 수도 있습니다.
+- Agent가 로컬 데이터를 수집할 수 있는 경우 수집을 특정 디렉토리 세트로 제한해야 합니다. 이 제한은 로컬로 지정되어야 하며 remote configuration을 통해 재정의할 수 없어야 합니다. 만약 그렇지 않다면 Agent는 머신에 민감한 정보에 액세스할 수도 있습니다.
 - Agent는 외부 코드를 실행할 수 있는 가지고 있기 때문에 Agent는 특정 디렉토리에 위치한 특정 스크립트로만 이 기능을 제한해야 합니다. 이 제한은 로컬에서만 지정하며 remote configuration에 통해서는 재정의를 막아야합니다. 그렇지 않다면 remote configuration 기능이 Agent의 머신에서 임의의 코드실행을 수행하는데 도움을 줄 수 있습니다.
 
 ## Configuration Restrictions
 
-Agent는 원격 구성을 통해 강제할 수 있는 작업을 제한하는 것이 좋습니다.
+Agent는 remote configuration을 통해 강제할 수 있는 작업을 제한하는 것이 좋습니다.
 
 Agent가 수집할 수 있는 디렉토리나 파일에 대한 Agent 측 제한을 두는 것이 좋습니다. remote configuration 수신했을때 Agent는 설정에 대해서 검증하고 제한을 위반하는 경우 configuration을 완전히 혹은 부분적으로 적용하지 않도록 하거나 금지된 디렉토리 및 파일에 대한 데이터를 수집하지 못하도록 해야합니다.
 
@@ -463,7 +463,7 @@ Agent가 실행할 수 있는 실행 파일에 대한 Agent 측 제한을 두는
 
 ## Opt-in remote configuration
 
-원격 구성 기능은 기본적으로 Agent에서 활성화되지 않는 것이 좋습니다. 기능은 사용자가 옵트인해야 합니다.
+remote configuration 기능은 기본적으로 Agent에서 활성화되지 않는 것이 좋습니다. 기능은 사용자가 Opt-in해야 합니다.
 
 ## Code Signing
 
