@@ -143,7 +143,7 @@ message AgentConfigFile {
 
 ## Package (Beta)
 
-`OpAMP`는 otel collector뿐만 아니라 host에서 설치되고 관리하고 싶은 process에 대해서 관리할 수 있도록 기능을 제공합니다. 그런 목적과 함께 실행하고 싶은 process에 대한 패키지와 그것과 함께 동작하는 addon 패키지에 대해서 관리를 지원합니다.
+`OpAMP`는 host에 특정 패키지를 설치하고 관리하도록 하는 기능을 제공합니다. 
 
 - 최상위 패키지와 하위 패키지라는 두 가지 유형의 패키지가 존재합니다.
   - 최상위 패키지는 Agent의 주요 기능을 구현한 것이며 일반적으로 하나의 패키지가 존재합니다.
@@ -151,7 +151,7 @@ message AgentConfigFile {
 
 패키지당 하나의 파일만 다운로드 할수 있기 때문에 패키지 안에 zip이나 tar 파일 형식으로 하는것을 추천합니다.
 
-- Server는 ServerToAgent 메시지의 `packages_available` 필드를 설정해야 됩니다.
+- Server는 `ServerToAgent` 메시지의 `packages_available` 필드를 설정해야 됩니다.
 - Agent가 `AcceptsPackages` 비트를 설정해야지만 Server가 패키지 정보를 제공합니다.
 
 ### Package download
