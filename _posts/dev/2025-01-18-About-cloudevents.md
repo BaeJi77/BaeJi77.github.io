@@ -14,7 +14,7 @@ tags:
 
 예제에 있는 코드들은 [해당 링크](https://github.com/BaeJi77/blog-code/blob/main/2025-01/cloudevents/src/main/kotlin/Main.kt)를 통해서 모두 볼 수 있습니다.
 
-### 요약
+# TL;DR
 
 cloudevents는 다양한 서비스와 플랫폼 간의 이벤트 데이터를 표준화하는 데 초점을 맞춘 사양입니다. 이 글에서는 cloudevents의 개념, 사양, 주요 특징, 실제 사용 사례, 장점과 한계를 종합적으로 다룹니다. 이를 통해 cloudevents가 어떻게 멀티 클라우드 환경에서 데이터 상호 운용성과 개발 효율성을 제공하는지 이해할 수 있습니다.
 
