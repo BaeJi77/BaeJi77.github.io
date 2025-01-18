@@ -1,6 +1,6 @@
 ---
-title: "Event를 발급할때 어떤 Spec을 사용하는게 좋을까? (feat. cloudevents)"
-description: "우리는 event를 발급하고 그것을 사용할 때 어떤 spec을 이용할지 고민하는 경우가 한번쯤은 있을 것이다. CNCF에서 지정하여 발전했던 event spec인 cloudevents에 대해서 알아보자."
+title: "Event를 만들때 어떤 Spec을 사용하는게 좋을까? (feat. cloudevents)"
+description: "우리는 event를 만들고 그것을 사용할 때 어떤 spec을 이용할지 고민하는 경우가 한번쯤은 있을 것이다. CNCF에서 지정하여 발전했던 event spec인 cloudevents에 대해서 알아보자."
 categories:
   - dev
   - cloud
@@ -16,17 +16,17 @@ tags:
 
 ### 요약
 
-CloudEvents는 다양한 서비스와 플랫폼 간의 이벤트 데이터를 표준화하는 데 초점을 맞춘 사양입니다. 이 글에서는 CloudEvents의 개념, 사양, 주요 특징, 실제 사용 사례, 장점과 한계를 종합적으로 다룹니다. 이를 통해 CloudEvents가 어떻게 멀티 클라우드 환경에서 데이터 상호 운용성과 개발 효율성을 제공하는지 이해할 수 있습니다.
+cloudevents는 다양한 서비스와 플랫폼 간의 이벤트 데이터를 표준화하는 데 초점을 맞춘 사양입니다. 이 글에서는 cloudevents의 개념, 사양, 주요 특징, 실제 사용 사례, 장점과 한계를 종합적으로 다룹니다. 이를 통해 cloudevents가 어떻게 멀티 클라우드 환경에서 데이터 상호 운용성과 개발 효율성을 제공하는지 이해할 수 있습니다.
 
 - 왜 필요할까? **클라우드 환경에서 이벤트 데이터의 다양성과 일관성 부족으로 인한 문제를 해결.**
 - 무엇을 제공할까? **표준화된 이벤트 형식과 프로토콜 독립성을 제공하며, 다양한 SDK와 데이터 형식을 지원.**
 - 주요 이점: **시스템 통합성을 향상시키고, 멀티 클라우드 아키텍처에서 이벤트 데이터를 쉽게 교환.**
 
-# CloudEvents란?
+# cloudevents란?
 
-cloudEvents는 이벤트 데이터를 일관된 방식으로 설명하기 위한 사양(Spec)입니다. 이 기술은 다양한 서비스, 플랫폼 및 시스템 간의 상호 운용성을 제공하는 것을 목표로 합니다.
+cloudevents는 이벤트 데이터를 일관된 방식으로 설명하기 위한 사양(Spec)입니다. 이 기술은 다양한 서비스, 플랫폼 및 시스템 간의 상호 운용성을 제공하는 것을 목표로 합니다.
 
-cloudEvents는 다음과 같은 주요 특징을 가지고 있습니다:
+cloudevents는 다음과 같은 주요 특징을 가지고 있습니다:
 
 - 이벤트 데이터를 위한 표준화된 형식 제공
 - 다양한 프로그래밍 언어를 위한 SDK 지원
@@ -44,9 +44,9 @@ cloudEvents는 다음과 같은 주요 특징을 가지고 있습니다:
 
 # Spec
 
-CloudEvents 사양은 필수 필드와 선택적 필드로 구성되어 있습니다.
+cloudevents 사양은 필수 필드와 선택적 필드로 구성되어 있습니다.
 
-CloudEvents의 필드들을 자세히 살펴보겠습니다. 각 필드에 대해 타입, 설명 및 특징, 그리고 다양한 예시를 제공하겠습니다.
+cloudevents의 필드들을 자세히 살펴보겠습니다. 각 필드에 대해 타입, 설명 및 특징, 그리고 다양한 예시를 제공하겠습니다.
 
 ## 필수 필드
 
@@ -78,7 +78,7 @@ CloudEvents의 필드들을 자세히 살펴보겠습니다. 각 필드에 대�
 ### specversion
 - 타입: `String`
 - 설명 및 특징:
-  - 사용된 CloudEvents 사양의 버전을 나타냅니다.
+  - 사용된 cloudevents 사양의 버전을 나타냅니다.
   - 이벤트 소비자가 올바른 파싱 및 해석 방법을 결정할 수 있게 합니다.
   - 현재 가장 널리 사용되는 버전은 1.0입니다.
 - 예시:
@@ -157,7 +157,7 @@ CloudEvents의 필드들을 자세히 살펴보겠습니다. 각 필드에 대�
 
 ## 실제 사용 예시
 
-1. AWS EventBridge: CloudEvents 기반으로 이벤트를 전송하며, 다양한 AWS 서비스와의 통합성을 보장합니다.
+1. AWS EventBridge: cloudevents 기반으로 이벤트를 전송하며, 다양한 AWS 서비스와의 통합성을 보장합니다.
    ```json
    {
      "specversion": "1.0",
@@ -174,7 +174,7 @@ CloudEvents의 필드들을 자세히 살펴보겠습니다. 각 필드에 대�
    }
    ```
 
-2. Google Cloud Pub/Sub: CloudEvents를 활용하여 메시지를 전달하고, 데이터의 일관성을 보장합니다.
+2. Google Cloud Pub/Sub: cloudevents를 활용하여 메시지를 전달하고, 데이터의 일관성을 보장합니다.
    ```json
    {
      "specversion": "1.0",
@@ -184,7 +184,7 @@ CloudEvents의 필드들을 자세히 살펴보겠습니다. 각 필드에 대�
      "datacontenttype": "application/json",
      "time": "2023-01-18T09:05:00-07:00",
      "data": {
-       "message": "Hello CloudEvents!",
+       "message": "Hello cloudevents!",
        "attributes": {
          "key": "value"
        }
@@ -192,7 +192,7 @@ CloudEvents의 필드들을 자세히 살펴보겠습니다. 각 필드에 대�
    }
    ```
 
-3. Knative Eventing: Kubernetes 환경에서 CloudEvents를 활용하여 이벤트 처리를 단순화합니다.
+3. Knative Eventing: Kubernetes 환경에서 cloudevents를 활용하여 이벤트 처리를 단순화합니다.
    ```json
    {
      "specversion": "1.0",
@@ -209,19 +209,19 @@ CloudEvents의 필드들을 자세히 살펴보겠습니다. 각 필드에 대�
 
 # 특징
 
-CloudEvents는 이벤트 데이터를 표준화된 방식으로 설명하기 위한 개방형 사양으로, 여러 가지 중요한 특징과 장점을 가지고 있습니다. 이러한 특징과 장점들을 단계적으로 살펴보겠습니다.
+cloudevents는 이벤트 데이터를 표준화된 방식으로 설명하기 위한 개방형 사양으로, 여러 가지 중요한 특징과 장점을 가지고 있습니다. 이러한 특징과 장점들을 단계적으로 살펴보겠습니다.
 
 ## 1. 표준화된 이벤트 형식
 
 ### 특징
 
-CloudEvents는 이벤트 데이터를 위한 공통 형식을 제공합니다. 이 형식은 필수 속성과 선택적 속성으로 구성되어 있어, 다양한 시스템에서 일관된 방식으로 이벤트를 표현할 수 있습니다.
+cloudevents는 이벤트 데이터를 위한 공통 형식을 제공합니다. 이 형식은 필수 속성과 선택적 속성으로 구성되어 있어, 다양한 시스템에서 일관된 방식으로 이벤트를 표현할 수 있습니다.
 
 표준화된 이벤트 형식은 이벤트 데이터의 표준화된 형식은 서로 다른 시스템, 플랫폼, 서비스 간의 상호 운용성을 크게 향상시킵니다.
 
 ### 예시
 
-예를 들어, 한 기업이 여러 cloud provider의 서비스를 사용하고 있다고 가정해 봅시다. AWS Lambda에서 생성된 이벤트, Azure Event Grid에서 처리되는 이벤트, 그리고 Google Cloud Eventarc로 라우팅되는 이벤트가 모두 동일한 CloudEvents 형식을 사용한다면, 이 기업은 이벤트 처리 로직을 단순화하고 통합할 수 있습니다.
+예를 들어, 한 기업이 여러 cloud provider의 서비스를 사용하고 있다고 가정해 봅시다. AWS Lambda에서 생성된 이벤트, Azure Event Grid에서 처리되는 이벤트, 그리고 Google Cloud Eventarc로 라우팅되는 이벤트가 모두 동일한 cloudevents 형식을 사용한다면, 이 기업은 이벤트 처리 로직을 단순화하고 통합할 수 있습니다.
 
 cloud provider뿐만 아니라 여러 오픈소스에서 cloudevents 호환가능한 데이터 포맷을 사용하고 있습니다. 더 많은 호환을 보기 위해서는 [공식 홈페이지](https://cloudevents.io/)를 참고하기를 바랍니다.
 
@@ -229,30 +229,30 @@ cloud provider뿐만 아니라 여러 오픈소스에서 cloudevents 호환가�
 
 ### 특징
 
-CloudEvents는 기본 속성 외에도 확장 속성을 정의할 수 있는 기능을 제공합니다. 이를 통해 특정 도메인이나 사용 사례에 필요한 추가 정보를 포함할 수 있습니다. `확장 속성(Extension Attributes)`을 통해 확장성을 제공합니다.
+cloudevents는 기본 속성 외에도 확장 속성을 정의할 수 있는 기능을 제공합니다. 이를 통해 특정 도메인이나 사용 사례에 필요한 추가 정보를 포함할 수 있습니다. `확장 속성(Extension Attributes)`을 통해 확장성을 제공합니다.
 
-이러한 확장성은 다양한 애플리케이션 및 도메인 시나리오에 CloudEvents를 적용할 수 있게 해주며, 특정 요구사항에 맞춰 이벤트 데이터를 커스터마이즈할 수 있습니다.
+이러한 확장성은 다양한 애플리케이션 및 도메인 시나리오에 cloudevents를 적용할 수 있게 해주며, 특정 요구사항에 맞춰 이벤트 데이터를 커스터마이즈할 수 있습니다.
 
 ### 예시 및 상황
 
-금융 서비스 회사에서 거래 이벤트를 처리하는 경우를 생각해봅시다. 기본 CloudEvents 속성 외에도 '거래 ID', '계좌 번호', '거래 금액' 등의 확장 속성을 정의하여 사용할 수 있습니다. 이렇게 하면 표준 형식을 유지하면서도 금융 거래에 특화된 정보를 포함할 수 있습니다[3][7].
+금융 서비스 회사에서 거래 이벤트를 처리하는 경우를 생각해봅시다. 기본 cloudevents 속성 외에도 '거래 ID', '계좌 번호', '거래 금액' 등의 확장 속성을 정의하여 사용할 수 있습니다. 이렇게 하면 표준 형식을 유지하면서도 금융 거래에 특화된 정보를 포함할 수 있습니다[3][7].
 
 ## 3. 프로토콜 독립성
 
 ### 특징
 
-CloudEvents는 다양한 전송 프로토콜을 지원합니다. HTTP, AMQP, MQTT 등 여러 프로토콜에 대한 바인딩을 제공하여, 다양한 환경에서 이벤트를 전송할 수 있습니다.
+cloudevents는 다양한 전송 프로토콜을 지원합니다. HTTP, AMQP, MQTT 등 여러 프로토콜에 대한 바인딩을 제공하여, 다양한 환경에서 이벤트를 전송할 수 있습니다.
 
-이러한 프로토콜 독립성은 CloudEvents를 다양한 시스템 아키텍처에 적용할 수 있게 해주며, 기존 인프라와의 통합을 용이하게 합니다.
+이러한 프로토콜 독립성은 cloudevents를 다양한 시스템 아키텍처에 적용할 수 있게 해주며, 기존 인프라와의 통합을 용이하게 합니다.
 
 ## 그 외에 특징
 
 ### event size limit
 
-CloudEvents 사양은 이벤트 크기를 64KB로 제한하도록 권장하지만, 실제 구현에서는 이보다 큰 이벤트를 허용하는 경우가 많습니다. 이는 권장사항일 뿐이며, 특정 사용 사례에 따라 더 큰 크기의 이벤트를 사용할 수 있습니다.
+cloudevents 사양은 이벤트 크기를 64KB로 제한하도록 권장하지만, 실제 구현에서는 이보다 큰 이벤트를 허용하는 경우가 많습니다. 이는 권장사항일 뿐이며, 특정 사용 사례에 따라 더 큰 크기의 이벤트를 사용할 수 있습니다.
 
 - size limit sdk implementaion
-  - 대부분의 CloudEvents SDK는 64KB 제한을 **명시적으로 강제하지 않습니다**.
+  - 대부분의 cloudevents SDK는 64KB 제한을 **명시적으로 강제하지 않습니다**.
   - 대신, 이벤트 생성 시 크기를 확인하거나 경고하는 기능을 제공하는 경우가 있습니다.
 - 유연성
   - 많은 SDK들은 64KB 이상의 이벤트도 허용합니다.
@@ -265,11 +265,7 @@ CloudEvents 사양은 이벤트 크기를 64KB로 제한하도록 권장하지�
 
 ### version 관리
 
-CloudEvents의 버전 관리는 이벤트 생산자와 소비자 간의 호환성을 유지하면서 이벤트 스키마를 진화시키는 중요한 측면입니다. CloudEvents 사양은 특정 버전 관리 패턴을 강제하지 않지만, 몇 가지 권장 사항과 접근 방식을 제시합니다.
-
-## CloudEvents의 버전 관리 접근 방식
-
-CloudEvents는 주로 두 가지 속성을 통해 버전 관리를 지원합니다:
+cloudevents의 버전 관리는 이벤트 생산자와 소비자 간의 호환성을 유지하면서 이벤트 스키마를 진화시키는 중요한 측면입니다. cloudevents 사양은 특정 버전 관리 패턴을 강제하지 않지만, 몇 가지 권장 사항과 접근 방식을 존재합니다.
 
 1. `type` 속성
    - 소비자가 이벤트 유형을 쉽게 식별하고 필터링할 수 있습니다.
@@ -292,11 +288,11 @@ CloudEvents는 주로 두 가지 속성을 통해 버전 관리를 지원합니�
 
 ## protobuf
 
-CloudEvents의 Protobuf message를 이용해서 cloudevents를 사용하는 방법이 존재합니다.
+cloudevents의 Protobuf message를 이용해서 cloudevents를 사용하는 방법이 존재합니다.
 
-### CloudEvents Protobuf 구조
+### cloudevents Protobuf 구조
 
-CloudEvents Protobuf 형식은 다음과 같은 구조를 가집니다:
+cloudevents Protobuf 형식은 다음과 같은 구조를 가집니다:
 
 ```protobuf
 message CloudEvent {
@@ -328,24 +324,11 @@ message CloudEventAttributeValue {
     google.protobuf.Timestamp ce_timestamp = 7;
   }
 }
-
-oneof data {
-    // Binary data
-    bytes binary_data = 2;
-
-    // String data
-    string text_data = 3;
-
-    // Protobuf Message data
-    google.protobuf.Any proto_data = 4;
-}
 ```
 
 ### 실제 사용 코드 예시
 
-밑에 있는 예제 코드는 java 코드를 기반으로 만들었습니다. 
-
-protobuf sdk 같은 경우 data에 `byte`, `text`, `protobuf` 이 3가지 유형에 값을 넣을 수 있습니다. 
+밑에 있는 예제 코드는 java 코드를 기반으로 만들었습니다. 밑에 예시는 data에 `text`, `protobuf` 유형을 만들어서 cloudevents를 만드는 코드 예제입니다.
 
 ```java
 public static CloudEvent plainTextExample() {
@@ -477,13 +460,13 @@ content-type: application/cloudevents+json; charset=UTF-8
 
 ### 실제 사용 코드 예시
 
-producer와 consumer에서 configuration에 Seriallization Deserialization에 대해서 cloudevent에 대한 타입을 지정하며 CloudEventSerializer, CloudEventDeserializer를 통해서 자동으로 가능하다.
+producer와 consumer에서 configuration에 Seriallization Deserialization에 대해서 cloudevent에 대한 타입을 지정하며 cloudeventserializer, CloudEventDeserializer를 통해서 자동으로 가능하다.
 
-위에서 설명했던 kafka에 value를 어떻게 넣냐는 producer에서 Seriallization 하는 configuration에서 설정할 수 있습니다. 자세한 사용은 [해당 링크](https://github.com/cloudevents/sdk-java/blob/main/kafka/src/main/java/io/cloudevents/kafka/CloudEventSerializer.java)를 참고하세요.
+위에서 설명했던 kafka에 value를 어떻게 넣냐는 producer에서 Seriallization 하는 configuration에서 설정할 수 있습니다. 자세한 사용은 [해당 링크](https://github.com/cloudevents/sdk-java/blob/main/kafka/src/main/java/io/cloudevents/kafka/cloudeventserializer.java)를 참고하세요.
 
 저는 특별히 kafka 환경까지 모두 구성하기에는 힘들기에 간단하게 kotlin 코드에서 consumer쪽에 코드를 상상하며 구현해봤습니다. 실질적으로 코드와는 다르지만 해당 로직을 참고하여서 여러 가지 것들을 할 수 있을것으로 예상됩니다.
 
-현재 코드상에서는 많은 것을 압축했지만 `consumerCloudEvents`라는 메소드가 지속적으로 kafka로 오는 데이터를 읽는다는 가정입니다. **이 상황에서 코드에서는 cloudevents의 `type`와 `dataSchema`를 확인하여서 해당 version을 처리할지 말지 결정할 수 있습니다.**
+현재 코드상에서는 많은 것을 압축했지만 `consumercloudevents`라는 메소드가 지속적으로 kafka로 오는 데이터를 읽는다는 가정입니다. **이 상황에서 코드에서는 cloudevents의 `type`와 `dataSchema`를 확인하여서 해당 version을 처리할지 말지 결정할 수 있습니다.**
 
 ```kotlin
 
@@ -494,8 +477,8 @@ data class MyEvent @JsonCreator constructor(
 
 val objectMapper = ObjectMapper()
 
-fun consumerCloudEvents(events: CloudEvent) {
-    val cloudEventsData =
+fun consumercloudevents(events: CloudEvent) {
+    val cloudeventsData =
         events.data?.let { PojoCloudEventDataMapper.from(objectMapper, MyEvent::class.java).map(it) }?.value
 
     when (events.type) {
@@ -518,7 +501,7 @@ fun consumerCloudEvents(events: CloudEvent) {
         }
     }
 
-    println(cloudEventsData)
+    println(cloudeventsData)
 
     // do something ...
     println("do something...")
