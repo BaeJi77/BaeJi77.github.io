@@ -1,0 +1,2 @@
+# Redirect non-trailing slash URLs to trailing slash URLs
+/:categories/:title  /:categories/:title/  301

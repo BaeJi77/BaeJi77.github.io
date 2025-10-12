@@ -11,167 +11,171 @@
 # https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
 
 # theme                  : "minimal-mistakes-jekyll"
-remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "mint" # "default" "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+remote_theme: "mmistakes/minimal-mistakes"
+minimal_mistakes_skin: "mint" # "default" "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
-locale                   : "en-US"
-title                    : "배지77의 블로그"
-title_separator          : "-"
-subtitle                 : # site tagline that appears below site title in masthead
-name                     : "JIHOON, BAE"
-description              : "하루는 최선을 다해, 인생을 되는대로 사는 사람"
-url                      : "https://baeji77.github.io"
-baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
-teaser                   : https://avatars2.githubusercontent.com/u/27915410?s=460&u=0a02bc9f36387f0f698152dd929280c4d0fda085&v=4 # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/237/technologist_1f9d1-200d-1f4bb.png # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
-masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
-breadcrumbs              : true # true, false (default)
-words_per_minute         : 200
+locale: "en-US"
+title: "배지77의 블로그"
+title_separator: "-"
+subtitle: # site tagline that appears below site title in masthead
+name: "JIHOON, BAE"
+description: "하루는 최선을 다해, 인생을 되는대로 사는 사람"
+url: "https://baeji77.github.io"
+baseurl: "" # the subpath of your site, e.g. "/blog"
+repository: # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+teaser: https://avatars2.githubusercontent.com/u/27915410?s=460&u=0a02bc9f36387f0f698152dd929280c4d0fda085&v=4 # path of fallback teaser image, e.g. "/assets/images/500x300.png"
+logo: https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/237/technologist_1f9d1-200d-1f4bb.png # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
+masthead_title: # overrides the website title displayed in the masthead, use " " for no title
+breadcrumbs: true # true, false (default)
+words_per_minute: 200
 comments:
-  provider               : disqus # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "custom"
+  provider: disqus # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "custom"
   disqus:
-    shortname            : https-baeji77-github-io # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+    shortname: https-baeji77-github-io # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
   discourse:
-    server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
+    server: # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
     # https://developers.facebook.com/docs/plugins/comments
-    appid                :
-    num_posts            : # 5 (default)
-    colorscheme          : # "light" (default), "dark"
+    appid:
+    num_posts: # 5 (default)
+    colorscheme: # "light" (default), "dark"
   utterances:
-    theme                : # "github-light" (default), "github-dark"
-    issue_term           : # "pathname" (default)
+    theme: # "github-light" (default), "github-dark"
+    issue_term: # "pathname" (default)
   staticman:
-    branch               : # "master"
-    endpoint             : # "https://{your Staticman v3 API}/v3/entry/github/"
+    branch: # "master"
+    endpoint: # "https://{your Staticman v3 API}/v3/entry/github/"
 reCaptcha:
-  siteKey                :
-  secret                 :
+  siteKey:
+  secret:
 atom_feed:
-  path                   : # blank (default) uses feed.xml
-search                   : # true, false (default)
-search_full_content      : # true, false (default)
-search_provider          : # lunr (default), algolia, google
+  path: # blank (default) uses feed.xml
+search: # true, false (default)
+search_full_content: # true, false (default)
+search_provider: # lunr (default), algolia, google
 algolia:
-  application_id         : # YOUR_APPLICATION_ID
-  index_name             : # YOUR_INDEX_NAME
-  search_only_api_key    : # YOUR_SEARCH_ONLY_API_KEY
-  powered_by             : # true (default), false
+  application_id: # YOUR_APPLICATION_ID
+  index_name: # YOUR_INDEX_NAME
+  search_only_api_key: # YOUR_SEARCH_ONLY_API_KEY
+  powered_by: # true (default), false
 google:
-  search_engine_id       : # YOUR_SEARCH_ENGINE_ID
-  instant_search         : # false (default), true
-# SEO Related
-google_site_verification :
-bing_site_verification   :
-yandex_site_verification :
-naver_site_verification  :
+  search_engine_id: # YOUR_SEARCH_ENGINE_ID
+  instant_search:
+    # false (default), true
+    # SEO Related
+google_site_verification:
+bing_site_verification:
+yandex_site_verification:
+naver_site_verification:
 
 # Social Sharing
 twitter:
-  username               :
+  username:
 facebook:
-  username               :
-  app_id                 :
-  publisher              :
-og_image                 : # Open Graph/Twitter default site image
-# For specifying social profiles
+  username:
+  app_id:
+  publisher:
+og_image:
+  # Open Graph/Twitter default site image
+  # For specifying social profiles
+
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
-  type                   : # Person or Organization (defaults to Person)
-  name                   : # If the user or organization name differs from the site's name
-  links: # An array of links to social media profiles
-
-# Analytics
-analytics:
-  provider               : google-gtag # false (default), "google", "google-universal", "custom"
-  google:
-    tracking_id          : G-0T03B5H5SV
-    anonymize_ip         : # true, false (default)
-
-
-# Site Author
-author:
-  name             : "JIHOON, BAE"
-  avatar           : https://avatars2.githubusercontent.com/u/27915410?s=460&u=0a02bc9f36387f0f698152dd929280c4d0fda085&v=4
-  bio              : "배지 라고 불리는 사람이 쓰는 개발 블로그"
-  location         : "Seoul, Korea"
-  email            :
+  type: # Person or Organization (defaults to Person)
+  name: # If the user or organization name differs from the site's name
   links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      url: mailto:hahawjstk@gmail.com
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      url: "https://facebook.com/baeji77"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/baeji77"
-    - label: "Linked-in"
-      icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/baeji77/"
+    # An array of links to social media profiles
+
+    # Analytics
+analytics:
+  provider: google-gtag # false (default), "google", "google-universal", "custom"
+  google:
+    tracking_id: G-0T03B5H5SV
+    anonymize_ip:
+      # true, false (default)
+
+
+      # Site Author
+author:
+  name: "JIHOON, BAE"
+  avatar: https://avatars2.githubusercontent.com/u/27915410?s=460&u=0a02bc9f36387f0f698152dd929280c4d0fda085&v=4
+  bio: "배지 라고 불리는 사람이 쓰는 개발 블로그"
+  location: "Seoul, Korea"
+  email:
+  links:
+  - label: "Email"
+    icon: "fas fa-fw fa-envelope-square"
+    url: mailto:hahawjstk@gmail.com
+  - label: "Facebook"
+    icon: "fab fa-fw fa-facebook-square"
+    url: "https://facebook.com/baeji77"
+  - label: "GitHub"
+    icon: "fab fa-fw fa-github"
+    url: "https://github.com/baeji77"
+  - label: "Linked-in"
+    icon: "fab fa-fw fa-linkedin"
+    url: "https://www.linkedin.com/in/baeji77/"
 
 # Site Footer
 footer:
   links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      # url:
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      # url:
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      # url:
-    - label: "GitLab"
-      icon: "fab fa-fw fa-gitlab"
-      # url:
-    - label: "Bitbucket"
-      icon: "fab fa-fw fa-bitbucket"
-      # url:
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      # url:
+  - label: "Twitter"
+    icon: "fab fa-fw fa-twitter-square"
+    # url:
+  - label: "Facebook"
+    icon: "fab fa-fw fa-facebook-square"
+    # url:
+  - label: "GitHub"
+    icon: "fab fa-fw fa-github"
+    # url:
+  - label: "GitLab"
+    icon: "fab fa-fw fa-gitlab"
+    # url:
+  - label: "Bitbucket"
+    icon: "fab fa-fw fa-bitbucket"
+    # url:
+  - label: "Instagram"
+    icon: "fab fa-fw fa-instagram"
+    # url:
 
 
-# Reading Files
+    # Reading Files
 include:
-  - .htaccess
-  - _pages
+- .htaccess
+- _pages
 exclude:
-  - "*.sublime-project"
-  - "*.sublime-workspace"
-  - vendor
-  - .asset-cache
-  - .bundle
-  - .jekyll-assets-cache
-  - .sass-cache
-  - assets/js/plugins
-  - assets/js/_main.js
-  - assets/js/vendor
-  - Capfile
-  - CHANGELOG
-  - config
-  - Gemfile
-  - Gruntfile.js
-  - gulpfile.js
-  - LICENSE
-  - log
-  - node_modules
-  - package.json
-  - package-lock.json
-  - Rakefile
-  - README
-  - tmp
-  - /docs # ignore Minimal Mistakes /docs
-  - /test # ignore Minimal Mistakes /test
+- "*.sublime-project"
+- "*.sublime-workspace"
+- vendor
+- .asset-cache
+- .bundle
+- .jekyll-assets-cache
+- .sass-cache
+- assets/js/plugins
+- assets/js/_main.js
+- assets/js/vendor
+- Capfile
+- CHANGELOG
+- config
+- Gemfile
+- Gruntfile.js
+- gulpfile.js
+- LICENSE
+- log
+- node_modules
+- package.json
+- package-lock.json
+- Rakefile
+- README
+- tmp
+- /docs # ignore Minimal Mistakes /docs
+- /test # ignore Minimal Mistakes /test
 keep_files:
-  - .git
-  - .svn
+- .git
+- .svn
 encoding: "utf-8"
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
-
 
 # Conversion
 markdown: kramdown
@@ -179,7 +183,6 @@ highlighter: rouge
 lsi: false
 excerpt_separator: "\n\n"
 incremental: false
-
 
 # Markdown Processing
 kramdown:
@@ -192,12 +195,10 @@ kramdown:
   smart_quotes: lsquo,rsquo,ldquo,rdquo
   enable_coderay: false
 
-
 # Sass/SCSS
 sass:
   sass_dir: _sass
   style: compressed # https://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
-
 
 # Outputting
 permalink: /:categories/:title/
@@ -205,26 +206,24 @@ paginate: 5 # amount of posts to show
 paginate_path: /page:num/
 timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
-
 # Plugins (previously gems:)
 plugins:
-  - jekyll-paginate
-  - jekyll-sitemap
-  - jekyll-gist
-  - jekyll-feed
-  - jekyll-include-cache
-  - jekyll-archives
-  - jekyll-seo-tag
-
+- jekyll-paginate
+- jekyll-sitemap
+- jekyll-gist
+- jekyll-feed
+- jekyll-include-cache
+- jekyll-archives
+- jekyll-seo-tag
+- jekyll-redirect-from
 
 # mimic GitHub Pages with --safe
 whitelist:
-  - jekyll-paginate
-  - jekyll-sitemap
-  - jekyll-gist
-  - jekyll-feed
-  - jekyll-include-cache
-
+- jekyll-paginate
+- jekyll-sitemap
+- jekyll-gist
+- jekyll-feed
+- jekyll-include-cache
 
 # Archives
 #  Type
@@ -246,9 +245,9 @@ tag_archive:
 # https://github.com/jekyll/jekyll-archives
 jekyll-archives:
   enabled:
-    # - categories
-    - tags
-    - year
+  # - categories
+  - tags
+  - year
   layouts:
     # category: archive-taxonomy
     tag: archive-taxonomy
@@ -257,8 +256,6 @@ jekyll-archives:
     # category: /categories/:name/
     tag: /tags/:name/
     year: /:year/
-    
-
 
 # HTML Compression
 # - https://jch.penibelst.de/
@@ -267,38 +264,36 @@ compress_html:
   ignore:
     envs: development
 
-
 # Defaults
 defaults:
-  # _posts
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: single
-      author_profile: false
-      show_date: true
-      read_time: true
-      comments: true
-      share: true
-      related: true
-      toc: true
+# _posts
+- scope:
+    path: ""
+    type: posts
+  values:
+    layout: single
+    author_profile: false
+    show_date: true
+    read_time: true
+    comments: true
+    share: true
+    related: true
+    toc: true
 
-  - scope:
-      path: "_posts/dev"
-    values:
-      sidebar:
-        nav: "dev-sidebar"
-  - scope:
-      path: "_posts/life"
-    values:
-      sidebar:
-        nav: "life-sidebar"
-  
-  # _pages
-  # - scope:
-  #     path: "_pages"
-  #     type: pages
-  #   values:
-  #     layout: single
-  #     author_profile: false
+- scope:
+    path: "_posts/dev"
+  values:
+    sidebar:
+      nav: "dev-sidebar"
+- scope:
+    path: "_posts/life"
+  values:
+    sidebar:
+      nav: "life-sidebar"
+# _pages
+# - scope:
+#     path: "_pages"
+#     type: pages
+#   values:
+#     layout: single
+#     author_profile: false
